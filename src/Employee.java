@@ -1,13 +1,15 @@
 package Restaurant;
 
-abstract class Employee {
+import java.util.Scanner;
+
+public abstract class Employee {
   protected int maNV, ngayLamViec, ngayNghi;
   protected String hoTen;
-  protected float luong, thuong = 0;
+  protected float luong, thuong;
   protected boolean fulltime;
   protected static int soLuongNV = 0;
 
-  public Employee(int maNV, String hoTen, int luong, boolean fulltime, int ngayLamViec, int ngayNghi) {
+  public Employee(int maNV, String hoTen, float luong, boolean fulltime, int ngayLamViec, int ngayNghi) {
     this.maNV = maNV;
     this.hoTen = hoTen;
     this.luong = luong;
@@ -74,14 +76,47 @@ abstract class Employee {
     return thuong;
   }
 
-  public int checkNgayNghi(int ngayNghi) {
-    if (ngayNghi > 3) {
-      return ngayNghi-3;
-    }
-    else return 0;
+  public void xuat() {
+    System.out.println("Nhan vien " + hoTen + ", ma so: " + maNV);
+    System.out.println("- Luong: " + luong + "vnd");
+    System.out.println("- Thuong: " + thuong + "vnd");
+    System.out.println("- Ngay lam viec: " + ngayLamViec);
+    System.out.println("- Ngay nghi: " + ngayNghi);
+    System.out.println(fulltime ? "Lam viec full-time" : "Lam viec part-time");
   }
-  public float getTien() {
-    return (ngayLamViec-checkngayNghi(ngayNghi))*luong + thuong; 
+  public void nhap() {
+    Scanner scanner = new Scanner(System.in);
+    String temp;
+
+    System.out.print("Nhap ten nhan vien: ");
+    hoTen = scanner.nextLine();
+    System.out.print("Nhap ma so nhan vien: ");
+    maNV = scanner.nextInt();
+    System.out.print("Nhap tien luong nhan vien: ");
+    luong = scanner.nextFloat();
+    System.out.print("Nhap tien thuong nhan vien: ");
+    thuong = scanner.nextFloat();
+    System.out.print("Nhap ngay lam viec nhan vien: ");
+    ngayLamViec = scanner.nextInt();
+    System.out.print("Nhap ngay nghi nhan vien: ");
+    ngayNghi = scanner.nextInt();
+    do {
+    System.out.print("Nhan vien lam viec fulltime hay partime?\n(Nhap parttime/ part-time/ part time/ p/ pt): de xac nhan la lam viec part-time\n(Nhap fulltime/ full-time/ full time/ ft/ f): de xac nhan la lam viec full-time");
+    temp = scanner.nextLine();
+    if (temp.equalsIgnoreCase("parttime") || temp.equalsIgnoreCase("part-time") || temp.equalsIgnoreCase("part time") || temp.equalsIgnoreCase("p") || temp.equalsIgnoreCase("pt")) {
+      fulltime = false;
+    }
+    else if (temp.equalsIgnoreCase("fulltime") || temp.equalsIgnoreCase("full-time") || temp.equalsIgnoreCase("full time") || temp.equalsIgnoreCase("f") || temp.equalsIgnoreCase("ft")) {
+      fulltime = true;
+    }
+    else {
+      temp = "";
+    }
+    } while (temp.equals(""));
+  }
+
+  public int checkNgayNghi() {
+    return ngayNghi > 3 ? ngayNghi - 3 : 0;
   }
 
   public void addNgayNghi() {
@@ -93,10 +128,12 @@ abstract class Employee {
   public void addNgayLamViec() {
     ngayLamViec++;
   }
-  public void addThuong() {
-    thuong += 100000;
+  public void addThuong(float thuong) {
+    this.thuong += thuong;
   }
 
+  public abstract float getTien();
+  public abstract void addThuong();
   static public int getEmployeeCount() {
     return soLuongNV;
   }
