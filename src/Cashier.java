@@ -17,6 +17,7 @@ public class Cashier extends Employee {
   public void nhap() {
     super.nhap();
     Scanner scanner = new Scanner(System.in);
+    System.out.print("Nhap so don da phuc vu: ");
     soHoaDon = scanner.nextInt();
   }
   public void xuat() {

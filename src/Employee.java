@@ -82,7 +82,7 @@ public abstract class Employee {
     System.out.println("- Thuong: " + thuong + "vnd");
     System.out.println("- Ngay lam viec: " + ngayLamViec);
     System.out.println("- Ngay nghi: " + ngayNghi);
-    System.out.println(fulltime ? "Lam viec full-time" : "Lam viec part-time");
+    System.out.println(fulltime ? "- Lam viec full-time" : "- Lam viec part-time");
   }
   public void nhap() {
     Scanner scanner = new Scanner(System.in);
@@ -100,8 +100,12 @@ public abstract class Employee {
     ngayLamViec = scanner.nextInt();
     System.out.print("Nhap ngay nghi nhan vien: ");
     ngayNghi = scanner.nextInt();
+    temp = scanner.nextLine();
     do {
-    System.out.print("Nhan vien lam viec fulltime hay partime?\n(Nhap parttime/ part-time/ part time/ p/ pt): de xac nhan la lam viec part-time\n(Nhap fulltime/ full-time/ full time/ ft/ f): de xac nhan la lam viec full-time");
+    System.out.println("Nhan vien lam viec fulltime hay partime?");
+    System.out.println("Nhap parttime/ part-time/ part time/ p/ pt): de xac nhan la lam viec part-time");
+    System.out.println("Nhap fulltime/ full-time/ full time/ ft/ f): de xac nhan la lam viec full-time");
+    System.err.print("Nhap: ");
     temp = scanner.nextLine();
     if (temp.equalsIgnoreCase("parttime") || temp.equalsIgnoreCase("part-time") || temp.equalsIgnoreCase("part time") || temp.equalsIgnoreCase("p") || temp.equalsIgnoreCase("pt")) {
       fulltime = false;

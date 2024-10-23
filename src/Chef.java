@@ -17,6 +17,7 @@ public class Chef extends Employee{
   public void nhap() {
     super.nhap();
     Scanner scanner = new Scanner(System.in);
+    System.out.print("Nhap so luong mon da nau: ");
     soLuongMonNau = scanner.nextInt();
   }
   public void xuat() {

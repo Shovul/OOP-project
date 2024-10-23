@@ -17,6 +17,7 @@ public class Waiter extends Employee {
   public void nhap() {
     super.nhap();
     Scanner scanner = new Scanner(System.in);
+    System.out.print("Nhap so khach da phuc vu: ");
     soKhachPhucVu = scanner.nextInt();
   }
   public void xuat() {
