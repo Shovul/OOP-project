@@ -4,14 +4,17 @@ import java.util.Scanner;
 
 public class ThuNgan extends NhanVien {
   protected int soHoaDon;
+  protected static int soLuong = 0;
   // danh sach cac hoa don?
   public ThuNgan() {
     super();
     soHoaDon = 0;
+    soLuong++;
   }
   public ThuNgan(int maNV, String hoTen, double luong, boolean fulltime, int ngayLamViec, int ngayNghi, int soHoaDon) {
     super(maNV, hoTen, luong, fulltime, ngayLamViec, ngayNghi);
     this.soHoaDon = soHoaDon;
+    soLuong++;
   }
 
   public int getHoaDon() {
@@ -37,5 +40,9 @@ public class ThuNgan extends NhanVien {
   }
   public double getTien() {
     return (ngayLamViec - super.checkNgayNghi())*luong + thuong*(soHoaDon/30);
+  }
+  
+  static public int getSoLuong() {
+    return soLuong;
   }
 }
