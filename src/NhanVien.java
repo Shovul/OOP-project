@@ -136,7 +136,7 @@ public abstract class NhanVien {
   public abstract double getTien();
   public abstract void addThuong();
   
-  static public int getEmployeeCount() {
+  static public int getSoLuong() {
     return soLuongNV;
   }
 }

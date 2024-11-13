@@ -71,8 +71,20 @@ public class DSNhanVien implements iDanhSach{
       }
     }
   }
+  public void xoa() {
+    System.out.print("Nhap ma nhan vien muon xoa: ");
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    xoa(n);
+  }
 
   //sua thong tin nhan vien
+  public void sua() {
+    System.out.print("Nhap ma nhan vien muon sua: ");
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    sua(n);
+  }
   public void sua(int maNV) {
     for(int i=0; i<length; i++) {
       if(DSNV[i].maNV == maNV) {
@@ -82,6 +94,12 @@ public class DSNhanVien implements iDanhSach{
   }
 
   //tim kiem va tra ve nhan vien
+  public void timkiem() {
+    System.out.print("Nhap ma nhan vien muon tim kiem: ");
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    timkiem(n);
+  }
   public void timkiem(int maNV) {
     for(int i=0; i<length; i++) {
       if(DSNV[i].maNV == maNV) {
@@ -151,7 +169,16 @@ public class DSNhanVien implements iDanhSach{
     try{
       FileWriter file = new FileWriter(filePath);
       for(int i=0; i<length; i++) {
-        file.write("db/"+DSNV[i].getMaNV()+"/"+DSNV[i].getTen()+"/"+DSNV[i].getLuong()+"/"+printFulltime(DSNV[i].getFulltime())+"/"+DSNV[i].getNgayLamViec()+"/"+DSNV[i].getNgayNghi()+"/\n");
+        if(DSNV[i] instanceof DauBep) {
+          file.write("db/");
+        }
+        if(DSNV[i] instanceof BoiBan) {
+          file.write("bb/");
+        }
+        if(DSNV[i] instanceof ThuNgan) {
+          file.write("tt/");
+        }
+        file.write(DSNV[i].getMaNV()+"/"+DSNV[i].getTen()+"/"+DSNV[i].getLuong()+"/"+printFulltime(DSNV[i].getFulltime())+"/"+DSNV[i].getNgayLamViec()+"/"+DSNV[i].getNgayNghi()+"/\n");
       }
       file.close();
     }

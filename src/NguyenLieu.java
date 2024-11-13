@@ -28,7 +28,7 @@ public class NguyenLieu {
     maNL = ma;
   }
   public int getMaNguyenLieu() {
-    return ma;
+    return maNL;
   }
   public String getTen() {
     return ten;

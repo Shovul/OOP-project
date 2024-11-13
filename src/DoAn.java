@@ -32,7 +32,7 @@ public class DoAn extends Mon {
     return nguyenlieuLam;
   }
   public int getSoNguyenLieu() {
-    return soNguyenLieu
+    return soNguyenLieu;
   }
 
   public void xuat() {

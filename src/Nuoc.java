@@ -5,11 +5,11 @@ public class Nuoc extends Mon{
   NguyenLieu loaiNuoc;
   public Nuoc() {
     super();
-    size = "";
+    size = '0';
     loaiNuoc = new NguyenLieu();
   }
-  public Nuoc(int maThucAn, float giaThucAn, String tenThucAn, int soLuongBan, char size, NguyenLieu loaiNuoc) {
-    super(maThucAn, giaThucAn, tenThucAn, soLuongBan);
+  public Nuoc(int maThucAn, String tenThucAn, double giaThucAn, char size, NguyenLieu loaiNuoc) {
+    super(maThucAn, tenThucAn, giaThucAn);
     this.size = size;
     this.loaiNuoc = loaiNuoc;
   }
@@ -39,7 +39,7 @@ public class Nuoc extends Mon{
 
   public void dungNguyenLieu(KhoNguyenLieu kho) {
     if(kho.coNguyenLieu(loaiNuoc)) {
-      giamNguyenLieu(loaiNuoc);
+      kho.giamNguyenLieu(loaiNuoc);
     }
   }
   
