@@ -1,17 +1,24 @@
-package Restaurant;
+// package Restaurant;
 
 import java.util.Scanner;
 
-public class Waiter extends Employee {
-  int soKhachPhucVu;
+public class BoiBan extends NhanVien {
+  protected int soKhachPhucVu;
   // danh sach khach phuc vu?
-  public Waiter() {
+  public BoiBan() {
     super();
     soKhachPhucVu = 0;
   }
-  public Waiter(int maNV, String hoTen, float luong, boolean fulltime, int ngayLamViec, int ngayNghi, int soKhachPhucVu) {
+  public BoiBan(int maNV, String hoTen, double luong, boolean fulltime, int ngayLamViec, int ngayNghi, int soKhachPhucVu) {
     super(maNV, hoTen, luong, fulltime, ngayLamViec, ngayNghi);
     this.soKhachPhucVu = soKhachPhucVu;
+  }
+  
+  public int getSoKhachPhucVu() {
+    return soKhachPhucVu;
+  }
+  public void setSoKhachPhucVu(int n) {
+    soKhachPhucVu = n;
   }
   
   public void nhap() {
@@ -31,7 +38,7 @@ public class Waiter extends Employee {
   public void addThuong() {
     thuong += 30000;
   }
-  public float getTien() {
+  public double getTien() {
     return (ngayLamViec - checkNgayNghi())*luong + thuong*(soKhachPhucVu/120);
   }
 }

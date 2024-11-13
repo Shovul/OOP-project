@@ -1,0 +1,5 @@
+db/101/Pham Nguyen Thanh Sang/1.0E7/ft/36/0/
+db/102/Nguyen Huu Dang Khoi/6000000.0/ft/0/0/
+db/103/Huynh Le Huy Hien/5000000.0/pt/30/2/
+db/103/Bladudu/1.0E8/pt/12/1/
+db/105/a/1000.0/ft/0/0/

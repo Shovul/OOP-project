@@ -1,15 +1,15 @@
-package Restaurant;
+// package Restaurant;
 
 import java.util.Scanner;
 
-public abstract class Employee {
+public abstract class NhanVien {
   protected int maNV, ngayLamViec, ngayNghi;
   protected String hoTen;
-  protected float luong, thuong;
+  protected double luong, thuong;
   protected boolean fulltime;
   protected static int soLuongNV = 0;
 
-  public Employee(int maNV, String hoTen, float luong, boolean fulltime, int ngayLamViec, int ngayNghi) {
+  public NhanVien(int maNV, String hoTen, double luong, boolean fulltime, int ngayLamViec, int ngayNghi) {
     this.maNV = maNV;
     this.hoTen = hoTen;
     this.luong = luong;
@@ -18,7 +18,7 @@ public abstract class Employee {
     this.ngayNghi = ngayNghi;
     soLuongNV++;
   }
-  public Employee() {
+  public NhanVien() {
     this.maNV = -1;
     this.ngayLamViec = 0;
     this.ngayNghi = 0;
@@ -41,7 +41,7 @@ public abstract class Employee {
   public void setNgayNghi(int ngayNghi) {
     this.ngayNghi = ngayNghi;
   }
-  public void setLuong(int luong) {
+  public void setLuong(double luong) {
     this.luong = luong;
   }
   public void setFulltime() {
@@ -57,14 +57,11 @@ public abstract class Employee {
   public String getTen() {
     return hoTen;
   }
-  public float getLuong() {
+  public double getLuong() {
     return luong;
   }
   public boolean getFulltime() {
     return fulltime;
-  }
-  public boolean getPartTime() {
-    return !fulltime;
   }
   public int getNgayLamViec() {
     return ngayLamViec;
@@ -72,13 +69,13 @@ public abstract class Employee {
   public int getNgayNghi() {
     return ngayNghi;
   }
-  public float getThuong() {
+  public double getThuong() {
     return thuong;
   }
 
   public void xuat() {
     System.out.println("Nhan vien " + hoTen + ", ma so: " + maNV);
-    System.out.println("- Luong: " + luong + "vnd");
+    System.out.printf("- Luong: %.2fvnd\n", luong);
     System.out.println("- Thuong: " + thuong + "vnd");
     System.out.println("- Ngay lam viec: " + ngayLamViec);
     System.out.println("- Ngay nghi: " + ngayNghi);
@@ -93,12 +90,12 @@ public abstract class Employee {
     System.out.print("Nhap ma so nhan vien: ");
     maNV = scanner.nextInt();
     System.out.print("Nhap tien luong nhan vien: ");
-    luong = scanner.nextFloat();
+    luong = scanner.nextDouble();
     System.out.print("Nhap tien thuong nhan vien: ");
-    thuong = scanner.nextFloat();
-    System.out.print("Nhap ngay lam viec nhan vien: ");
+    thuong = scanner.nextDouble();
+    System.out.print("Nhap so ngay lam viec nhan vien: ");
     ngayLamViec = scanner.nextInt();
-    System.out.print("Nhap ngay nghi nhan vien: ");
+    System.out.print("Nhap so ngay nghi nhan vien: ");
     ngayNghi = scanner.nextInt();
     temp = scanner.nextLine();
     do {
@@ -132,12 +129,13 @@ public abstract class Employee {
   public void addNgayLamViec() {
     ngayLamViec++;
   }
-  public void addThuong(float thuong) {
+  public void addThuong(double thuong) {
     this.thuong += thuong;
   }
 
-  public abstract float getTien();
+  public abstract double getTien();
   public abstract void addThuong();
+  
   static public int getEmployeeCount() {
     return soLuongNV;
   }
