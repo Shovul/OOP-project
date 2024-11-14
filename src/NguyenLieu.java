@@ -3,17 +3,17 @@
 import java.util.Scanner;
 
 public class NguyenLieu {
-  protected int maNL;
+  // protected int maNL;
   protected String ten;
   protected int soLuong;
 
   public NguyenLieu() {
     ten = "";
     soLuong = 0;
-    maNL = 0;
+    // maNL = 0;
   }
   public NguyenLieu(int maNL, String ten, int soLuong) {
-    this.maNL = maNL;
+    // this.maNL = maNL;
     this.ten = ten;
     this.soLuong = soLuong;
   }
@@ -24,12 +24,12 @@ public class NguyenLieu {
   public void setSoLuong(int sl) {
     soLuong = sl;
   }
-  public void setMaNguyenLieu(int ma) {
-    maNL = ma;
-  }
-  public int getMaNguyenLieu() {
-    return maNL;
-  }
+  // public void setMaNguyenLieu(int ma) {
+  //   maNL = ma;
+  // }
+  // public int getMaNguyenLieu() {
+  //   return maNL;
+  // }
   public String getTen() {
     return ten;
   }

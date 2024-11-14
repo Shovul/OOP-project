@@ -44,6 +44,9 @@ public abstract class NhanVien {
   public void setLuong(double luong) {
     this.luong = luong;
   }
+  public void setThuong(double thuong) {
+    this.thuong = thuong;
+  }
   public void setFulltime() {
     fulltime = true;
   }
@@ -116,7 +119,7 @@ public abstract class NhanVien {
     } while (temp.equals(""));
   }
 
-  public int checkNgayNghi() {
+  protected int checkNgayNghi() {
     return ngayNghi > 3 ? ngayNghi - 3 : 0;
   }
 
@@ -135,6 +138,7 @@ public abstract class NhanVien {
 
   public abstract double getTien();
   public abstract void addThuong();
+  // public abstract void capNhatNhanVien();
   
   static public int getSoLuong() {
     return soLuongNV;

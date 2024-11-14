@@ -32,7 +32,7 @@ public class DauBep extends NhanVien implements iCook{
   }
   public void xuat() {
     super.xuat();
-    System.out.println("- So hoa don: " + soLuongMonNau);
+    System.out.println("- So mon nau: " + soLuongMonNau);
   }
   
   @Override

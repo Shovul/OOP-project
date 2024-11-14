@@ -24,7 +24,7 @@ public abstract class Mon {
   public void setGiaThucAn(double giaThucAn) {
     this.giaThucAn = giaThucAn;
   }
-  public void setmaThucAn(int maThucAn) {
+  public void setMaThucAn(int maThucAn) {
     this.maThucAn = maThucAn;
   }
 
@@ -34,18 +34,18 @@ public abstract class Mon {
   public double getGiaThucAn() {
     return giaThucAn;
   }
-  public int getmaThucAn() {
+  public int getMaThucAn() {
     return maThucAn;
   }
 
   public void nhap() {
     Scanner scanner = new Scanner(System.in);
     
-    System.out.print("Nhap ten thuc an: ");
+    System.out.print("Nhap ten mon: ");
     tenThucAn =  scanner.nextLine();
-    System.out.print("Nhap ma thuc an: ");
+    System.out.print("Nhap ma mon: ");
     maThucAn = scanner.nextInt();
-    System.out.print("Nhap gia thuc an: ");
+    System.out.print("Nhap gia mon: ");
     giaThucAn = scanner.nextDouble();
   }
   public void xuat() {

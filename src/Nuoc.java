@@ -23,23 +23,28 @@ public class Nuoc extends Mon{
   public void setSize(char s) {
     size = s;
   }
-  public void setLoaiNuoc(NguyenLieu loaiNuoc) {
-    this.loaiNuoc = loaiNuoc;
+  public void setLoaiNuoc(String ten, int dungTich) {
+    loaiNuoc.setNguyenLieu(ten);
+    loaiNuoc.setSoLuong(dungTich);
   }
 
   public void nhap() {
     super.nhap();
     Scanner scanner = new Scanner(System.in);
+    System.out.print("Nhap size cua nuoc: ");
+    size = scanner.next().charAt(0);
+    loaiNuoc.nhap();
   }
   public void xuat() {
     super.xuat();
-    System.out.println("Loai: " + loaiNuoc);
+    System.out.println("Loai: " + loaiNuoc.ten);
+    System.out.println("Dung tich: " + loaiNuoc.soLuong + "ml");
     System.out.println("Kich co: " + size);
   }
 
   public void dungNguyenLieu(KhoNguyenLieu kho) {
     if(kho.coNguyenLieu(loaiNuoc)) {
-      kho.giamNguyenLieu(loaiNuoc);
+      kho.giamNguyenLieu(loaiNuoc, size);
     }
   }
   

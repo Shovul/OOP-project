@@ -5,4 +5,5 @@ public interface iDanhSach {
   public void xoa();
   public void sua();
   public void timkiem();
+  public void xuat();
 }
