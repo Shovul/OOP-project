@@ -1,5 +1,6 @@
 // package Restaurant;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class DoAn extends Mon {
@@ -21,12 +22,18 @@ public class DoAn extends Mon {
     this.soNguyenLieu = soNguyenLieu;
     nguyenlieuLam = new NguyenLieu[soNguyenLieu];
   }
-
+  
+  public void setNguyenLieuLam(int i, String ten, int soLuong) {
+      nguyenlieuLam[i] =new NguyenLieu();
+      nguyenlieuLam[i].setNguyenLieu(ten);
+      nguyenlieuLam[i].setSoLuong(soLuong);
+  }
   public void setNguyenLieuLam(NguyenLieu[] nguyenlieu) {
     nguyenlieuLam = nguyenlieu;
   }
   public void setSoNguyenLieu(int soLuongNguyenLieu) {
     soNguyenLieu = soLuongNguyenLieu;
+    nguyenlieuLam = new NguyenLieu[soNguyenLieu];
   }
   public NguyenLieu[] getNguyenLieu() {
     return nguyenlieuLam;

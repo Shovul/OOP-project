@@ -6,7 +6,7 @@ public class main {
   static int n = 0;
   static boolean flag = true;
   static Scanner sc = new Scanner(System.in);
-
+  
   public static void quanLyNhanVien() {
     DSNhanVien danhsachNhanVien = new DSNhanVien();
     String infile = "";
@@ -21,7 +21,7 @@ public class main {
       System.out.println("6. Nhap danh sach nhan vien tu file");
       System.out.println("7. Xuat danh sach nhan vien ra file");
       System.out.println("8. Cap nhat danh sach nhan vien");
-      System.out.println("9. Thoat quan ly");
+      System.out.println("9. Thoat quan ly nhan vien");
       n = sc.nextInt();
       switch (n) {
         case 1:
@@ -72,7 +72,68 @@ public class main {
     flag = true;
   }
   public static void quanLyMonAn() {
+    DSMon danhsachMon = new DSMon();
+    String infile = "";
+    String outfile = "";
+    do {
+      System.out.println("-- Quan ly menu quan --");
+      System.out.println("1. Xuat menu ra man hinh");
+      System.out.println("2. Tim kiem mon");
+      System.out.println("3. Them mon");
+      System.out.println("4. Xoa mon");
+      System.out.println("5. Sua mon");
+      System.out.println("6. Nhap danh sach menu tu file");
+      System.out.println("7. Xuat danh sach menu ra file");
+      System.out.println("8. Cap nhat danh sach menu");
+      System.out.println("9. Thoat quan ly menu");
+      n = sc.nextInt();
+      switch (n) {
+        case 1:
+          danhsachMon.xuat();
+          break;
+        case 2:
+          danhsachMon.timkiem();
+          break;
+        case 3:
+          danhsachMon.them();
+          break;
+        case 4:
+          danhsachMon.xoa();
+          break;
+        case 5:
+          danhsachMon.sua();
+          break;
+        case 6: {
+          System.out.println("Nhap file chua thong tin mon");
+          infile = sc.nextLine();
+          infile = sc.nextLine();
+          danhsachMon.addByFile(infile);
+          break;
+        }
+        case 7: {
+          System.out.println("Nhap file de in cac thong tin mon");
+          outfile = sc.nextLine();
+          outfile = sc.nextLine();
+          danhsachMon.printListInFile(outfile);
+          break;
+        }
+        case 8: {
+          if(infile.equals("")) {
+            System.out.println("!Chua nhap file input!");
+            break;
+          }
+          System.out.println("Da cap nhap file thong tin mon");
+          danhsachMon.printListInFile(infile);
+          break;
+        }
+        case 9: {
+          flag = false;
+          break;
+        }
+      }
+    }while(flag);
     
+    flag = true;
   }
   public static void quanLyKhachHang() {
     
@@ -85,6 +146,7 @@ public class main {
   }
   public static void main(String[] args) {
     do {
+      // System.out.print("\033[H\033[2J");  
       System.out.println("Chon de quan ly");
       System.out.println("1. Danh sach nhan vien");
       System.out.println("2. Danh sach mon an");

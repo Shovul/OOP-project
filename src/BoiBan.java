@@ -3,36 +3,36 @@
 import java.util.Scanner;
 
 public class BoiBan extends NhanVien {
-  protected int soKhachPhucVu;
+  protected int soBanPhucVu;
   protected static int soLuong = 0;
   // danh sach khach phuc vu?
   public BoiBan() {
     super();
-    soKhachPhucVu = 0;
+    soBanPhucVu = 0;
     soLuong++;
   }
-  public BoiBan(int maNV, String hoTen, double luong, boolean fulltime, int ngayLamViec, int ngayNghi, int soKhachPhucVu) {
+  public BoiBan(int maNV, String hoTen, double luong, boolean fulltime, int ngayLamViec, int ngayNghi, int soBanPhucVu) {
     super(maNV, hoTen, luong, fulltime, ngayLamViec, ngayNghi);
-    this.soKhachPhucVu = soKhachPhucVu;
+    this.soBanPhucVu = soBanPhucVu;
     soLuong++;
   }
   
-  public int getSoKhachPhucVu() {
-    return soKhachPhucVu;
+  public int getSoBanPhucVu() {
+    return soBanPhucVu;
   }
-  public void setSoKhachPhucVu(int n) {
-    soKhachPhucVu = n;
+  public void setSoBanPhucVu(int n) {
+    soBanPhucVu = n;
   }
   
   public void nhap() {
     super.nhap();
     Scanner scanner = new Scanner(System.in);
     System.out.print("Nhap so khach da phuc vu: ");
-    soKhachPhucVu = scanner.nextInt();
+    soBanPhucVu = scanner.nextInt();
   }
   public void xuat() {
     super.xuat();
-    System.out.println("- So hoa don: " + soKhachPhucVu);
+    System.out.println("- So ban phuc vu: " + soBanPhucVu);
   }
   @Override
   public int checkNgayNghi() {
@@ -42,7 +42,7 @@ public class BoiBan extends NhanVien {
     thuong += 30000;
   }
   public double getTien() {
-    return (ngayLamViec - checkNgayNghi())*luong + thuong*(soKhachPhucVu/120);
+    return (ngayLamViec - checkNgayNghi())*luong + thuong*(soBanPhucVu/120);
   }
   
   static public int getSoLuong() {
