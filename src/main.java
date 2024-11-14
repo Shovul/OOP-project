@@ -139,7 +139,74 @@ public class main {
     
   }
   public static void quanLyNguyenLieu() {
+    KhoNguyenLieu khoNguyenLieu = new KhoNguyenLieu();
+    String infile = "";
+    String outfile = "";
+    do {
+      System.out.println("-- Quan ly kho nguyen lieu --");
+      System.out.println("1. Xuat kho nguyen lieu ra man hinh");
+      System.out.println("2. Tim kiem nguyen lieu");
+      System.out.println("3. Them nguyen lieu");
+      System.out.println("4. Xoa nguyen lieu");
+      System.out.println("5. Sua nguyen lieu");
+      System.out.println("6. Nhap danh sach kho nguyen lieu tu file");
+      System.out.println("7. Xuat danh sach kho nguyen lieu ra file");
+      System.out.println("8. Cap nhat danh sach kho nguyen lieu");
+      System.out.println("9. Kiem tra so luong nguyen lieu");
+      System.out.println("10. Thoat quan ly kho nguyen lieu");
+      n = sc.nextInt();
+      switch (n) {
+        case 1:
+          khoNguyenLieu.xuat();
+          break;
+        case 2:
+          khoNguyenLieu.timkiem();
+          break;
+        case 3:
+          khoNguyenLieu.them();
+          break;
+        case 4:
+          khoNguyenLieu.xoa();
+          break;
+        case 5:
+          khoNguyenLieu.sua();
+          break;
+        case 6: {
+          System.out.println("Nhap file chua thong tin mon");
+          infile = sc.nextLine();
+          infile = sc.nextLine();
+          khoNguyenLieu.addByFile(infile);
+          break;
+        }
+        case 7: {
+          System.out.println("Nhap file de in cac thong tin mon");
+          outfile = sc.nextLine();
+          outfile = sc.nextLine();
+          khoNguyenLieu.printListInFile(outfile);
+          break;
+        }
+        case 8: {
+          if(infile.equals("")) {
+            System.out.println("!Chua nhap file input!");
+            break;
+          }
+          System.out.println("Da cap nhap file thong tin mon");
+          khoNguyenLieu.printListInFile(infile);
+          break;
+        }
+        case 9: {
+          System.out.print("Kiem tra so luong nguyen lieu <= ");
+          khoNguyenLieu.kiemTraSoLuongNguyenLieu(sc.nextInt());
+          break;
+        }
+        case 10: {
+          flag = false;
+          break;
+        }
+      }
+    }while(flag);
     
+    flag = true;
   }
   public static void quanLyDonHang() {
     

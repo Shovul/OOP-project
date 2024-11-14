@@ -306,7 +306,6 @@ public class DSMon implements iDanhSach {
       String line = file.readLine();
       while(line != null) {
         String[] arrayLine = line.split("/");
-        System.out.println(arrayLine);
         danhSachMon = Arrays.copyOf(danhSachMon, length+1);
         if (arrayLine[0].equalsIgnoreCase("doan")) {
           danhSachMon[length] = new DoAn();
