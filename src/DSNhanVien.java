@@ -422,7 +422,6 @@ public class DSNhanVien implements iDanhSach{
       String line = file.readLine();
       while(line != null) {
         String[] arrayLine = line.split("/");
-        System.out.println(arrayLine);
         DSNV = Arrays.copyOf(DSNV, length+1);
         if (arrayLine[0].equalsIgnoreCase("db")) {
           DSNV[length] = new DauBep();
@@ -480,7 +479,7 @@ public class DSNhanVien implements iDanhSach{
         if(DSNV[i] instanceof ThuNgan) {
           file.write("tt/"+((ThuNgan)DSNV[length]).getHoaDon()+"/");
         }
-        file.write(DSNV[i].getMaNV()+"/"+DSNV[i].getTen()+"/"+DSNV[i].getLuong()+"/"+printFulltime(DSNV[i].getFulltime())+"/"+DSNV[i].getNgayLamViec()+"/"+DSNV[i].getNgayNghi()+"/\n");
+        file.write(DSNV[i].getMaNV()+"/"+DSNV[i].getTen()+"/"+DSNV[i].getLuong()+"/"+printFulltime(DSNV[i].getFulltime())+"/"+DSNV[i].getNgayLamViec()+"/"+DSNV[i].getNgayNghi()+"\n");
       }
       file.close();
     }
@@ -488,5 +487,4 @@ public class DSNhanVien implements iDanhSach{
       System.out.println(e);
     }
   }
-  
 }

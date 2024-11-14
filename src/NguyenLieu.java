@@ -18,7 +18,7 @@ public class NguyenLieu {
     this.soLuong = soLuong;
   }
 
-  public void setNguyenLieu(String ten) {
+  public void setTen(String ten) {
     this.ten = ten;
   }
   public void setSoLuong(int sl) {
@@ -35,6 +35,9 @@ public class NguyenLieu {
   }
   public int getSoLuong() {
     return soLuong;
+  }
+  public void themSoLuong(int them) {
+    soLuong += them;
   }
 
   public void xuat() {

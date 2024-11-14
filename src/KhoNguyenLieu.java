@@ -1,5 +1,8 @@
 // package src;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -28,6 +31,7 @@ public class KhoNguyenLieu implements iDanhSach{
     length++;
   }
   public void xoa() {
+    System.out.print("Nhap ten nguyen lieu muon xoa: ");
     Scanner sc = new Scanner(System.in);
     String ten = sc.nextLine();
     for(int i=0; i<length; i++) {
@@ -48,19 +52,21 @@ public class KhoNguyenLieu implements iDanhSach{
     int n = sc.nextInt();
     switch (n) {
       case 1:
-        kho[i].set
+        sc.nextLine();
+        kho[i].setTen(sc.nextLine());
         break;
       case 2:
-        
+        kho[i].setSoLuong(sc.nextInt());
         break;
       case 3:
-        
+        kho[i].themSoLuong(sc.nextInt());
         break;
       case 4:
-        
+        kho[i].nhap();
         break;
     
       default:
+        quanLySua(i);
         break;
     }
   } 
@@ -82,10 +88,66 @@ public class KhoNguyenLieu implements iDanhSach{
     } 
   }
   public void timkiem() {
-    
+    Scanner sc = new Scanner(System.in);
+    boolean flag = false;
+    System.out.print("Nhap ten nguyen lieu can tim: ");
+    String s = sc.nextLine();
+    for(int i=0; i<length; i++) {
+      if(kho[i].ten.equals(s)) {
+        kho[i].xuat();
+        flag = true;
+        break;
+      }
+    }
+    if(!flag) {
+      System.out.println("Khong tin thay nguyen lieu");
+    }
   }
   public void xuat() {
+    for(int i=0; i<length; i++) {
+      kho[i].xuat();
+    }
+  }
+  
+  public void addByFile(String filePath) {
+    try {
+      BufferedReader file = new BufferedReader(new FileReader(filePath));
+      String line = file.readLine();
+      while(line != null) {
+        String[] arrayLine = line.split("/");
+        kho = Arrays.copyOf(kho, length+1);
+        kho[length] = new NguyenLieu();
+        kho[length].setTen(arrayLine[0]);
+        kho[length].setSoLuong(Integer.parseInt(arrayLine[1]));
+        line = file.readLine();
+        length++;
+      }
+      file.close();
+    }
+    catch(Exception ex) {
+      ex.printStackTrace();
+    }
+  }
 
+  public void printListInFile(String filePath) {
+    try{
+      FileWriter file = new FileWriter(filePath);
+      for(int i=0; i<length; i++) {
+        file.write(kho[i].getTen()+"/"+kho[i].getSoLuong()+"\n");
+      }
+      file.close();
+    }
+    catch(Exception e) {
+      System.out.println(e);
+    }
+  }
+
+  public void kiemTraSoLuongNguyenLieu(int n) {
+    for(int i=0; i<length; i++) {
+      if(kho[i].soLuong <= n) {
+        kho[i].xuat();
+      }
+    }
   }
 
   public void giamNguyenLieu(NguyenLieu n) {
