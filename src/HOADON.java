@@ -1,60 +1,75 @@
-import java. util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
-public class HOADON{
+public class HoaDon {
     private int MaHD;
     private String NgayInDon;
-    public  KHACHHANG tenKH;
-    private double TongTien;
-    public  DSMon dsMon;
-    
-    public HOADON()
+    private KHACHHANG Khach;
+    private Map<Mon, int> DSmon;//hashmap lưu món ăn và số lượng
+    private double TongTien; //lưu tổng tiền của hóa đơn
 
-    {
-        MaHD = 0;
+    public HoaDon(){
+        MaHD = 00000;
         NgayInDon = "01-01-2024";
-        tenKH = NULL;
+        Khach = null;
         TongTien = 0.0;
-        dsMon = "";
+        DSmon = new HashMap<>();
     }
 
-    public HOADON(int MaHD, String NgayInDon, KHACHHANG tenKH, DSMon dsMon, double TongTien){
+    public HoaDon(int MaHD, String NgayInDon, KHACHHANG Khach, Map<Mon, int> DSmon, double TongTien){
         this.MaHD = MaHD;
         this.NgayInDon = NgayInDon;
-        this.tenKH = tenKH;
-        this.dsMon = dsMon;
-        this.TongTien = 0.0;
+        this.TongTien = TongTien;
+        this.Khach = Khach;
+        this.DSmon = DSmon;
+        tinhTongTien();
     }
 
-    public void themMon(String tenMon, int Soluong, double DonGia){
-        DSMon mon = new dsMon(tenMon, Soluong, DonGia);
-        DSMon.add(mon);
-        TongTien += mon.tinhTien();
+    public void tinhTongTien(){
+        double TongTien = 0;
+        DSmon.forEach((mon, soLuong) -> TongTien += mon.giaThucAn * soLuong);
     }
 
-    public int tinhTongSL(){
-        int TongSL = 0;
-        for(DSMon mon:dsMon){
-            TongSL += mon.getSoluong();
+    public void Nhap(){
+        Scanner hd = new Scanner(System.in);
+        System.out.println("Nhập mã hóa đơn: ");
+        MaHD = hd.nextInt();
+        System.out.println("Nhập ngày in đơn: ");//dd-MM-yy
+        NgayInDon = hd.nextLine();
+        Khach = new KHACHHANG();
+        Khach.Nhap();
+        System.out.println("Nhập số lượng món: ");
+        int soLuongMon = hd.nextInt();
+        for(int i = 0; i < soLuongMon; i++){
+            System.out.println("Nhập thông tin món thứ " + (i + 1) + ":");
+            Mon mon = new Mon();
+            mon.Nhap();
+        
+            System.out.println("Nhập số lượng: ");
+            int soLuong = hd.nextInt();
+
+            DSmon.put(mon, soLuong); // thêm món và số lượng vào hashmap
         }
-        return TongSL;
+        tinhTongTien();
     }
 
-    public void HienThiHD(){
-        System.out.println("Mã Hóa Đơn: " +MaHD);
-        System.out.println("Ngày: " +NgayInDon);
-        System.out.println("Tên Khách Hàng: " +tenKH);
+    public void Xuat(){
+        System.out.println("Mã hóa đơn: " + MaHD);
+        System.out.println("Ngày in đơn: " + NgayInDon);
+        System.out.println("Tên khách hàng: " + Khach);
         System.out.println("Danh sách món: ");
-        for(DSMon mon:dsMon){
-            System.out.println("_"+mon.gettenMon()+"|Số lượng: "+mon.getSoluong()+"|Đơn giá: "+mon.getDonGia()+"VNĐ|Thành tiền: "+mon.tinhTien()+"VNĐ");
-        }
-        System.out.println("Tổng số lượng: " +tinhTongSL());
-        System.out.println("Thành tiền: " +TongTien+"VNĐ");
+        DSmon.forEach((mon, soLuong) -> {
+            mon.Xuat();
+            System.out.println("Số lượng: " +soLuong);
+            System.out.println("Thành tiền: " + mon.giaThucAn*soLuong);
+        });
+        System.out.println("Tổng tiền: " + TongTien);
+        
     }
-
     public int getMaHD(){
         return MaHD;
     }
-
     public void setMaHD(int MaHD){
         this.MaHD = MaHD;
     }
@@ -62,53 +77,27 @@ public class HOADON{
     public String getNgayInDon(){
         return NgayInDon;
     }
-
     public void setNgayInDon(String NgayInDon){
         this.NgayInDon = NgayInDon;
     }
 
-    public String gettenKH(){
-        return tenKH;
+    public KHACHHANG getKhach(){
+        return Khach;
+    }
+    public void setkhach(KHACHHANG Khach){
+        this.Khach = Khach;
     }
 
-    public void settenKH(String tenKH){
-        this.tenKH = tenKH;
+    public HashMap<Mon, int> getDSmon(){
+        return DSmon;
     }
-
-    public double getTongTien(){
-        return TongTien;
+    public void setMon(DoAn mon, int soLuong){
+        if(DSmon.containsKey(mon))
+        {
+            DSmon.merge(mon, soLuong, (soLuongCu, soLuongMoi) -> soLuongCu + soLuongMoi);
+        }
+        else{
+            DSmon.put(mon, soLuong);
+        }
     }
-
-    public void setTongTien(double TongTien){
-        this.TongTien = TongTien;
-    }
-
-    public String getdsMon(){
-        return dsMon;
-    }
-    
-    public void setdsMon(String dsMon){
-        this.dsMon = dsMon;
-    }
-
-    public String getSoluong(){
-        return Soluong;
-    }
-    
-    public void setSoluong(String Soluong){
-        this.Soluong = Soluong;
-    }
-
-    public String getDonGia(){
-        return DonGia;
-    }
-    
-    public void setDonGia(String DonGia){
-        this.DonGia = DonGia;
-    }
-
-    public double tinhTien(){
-        return Soluong*DonGia;
-    }
-
 }

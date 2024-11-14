@@ -6,16 +6,19 @@ public abstract class Mon {
   int maThucAn;
   String tenThucAn;
   double giaThucAn;
+  int soLuong;
   
-  public Mon(int maThucAn, String tenThucAn, double giaThucAn) {
+  public Mon(int maThucAn, String tenThucAn, double giaThucAn, int soLuong) {
     this.giaThucAn = giaThucAn;
     this.tenThucAn = tenThucAn;
     this.maThucAn = maThucAn;
+    this.soLuong = soLuong;
   }
   public Mon() {
     this.giaThucAn = 0;
     this.tenThucAn = "";
     this.maThucAn = 0;
+    this.soLuong = 0;
   }
 
   public void setTenThucAn(String tenThucAn) {
@@ -27,6 +30,9 @@ public abstract class Mon {
   public void setMaThucAn(int maThucAn) {
     this.maThucAn = maThucAn;
   }
+  public void setsoLuong(int soLuong){
+    this.soLuong = soLuong;
+  }
 
   public String getTenThucAn() {
     return tenThucAn;
@@ -36,6 +42,9 @@ public abstract class Mon {
   }
   public int getMaThucAn() {
     return maThucAn;
+  }
+  public int getsoLuong(){
+    return soLuong;
   }
 
   public void nhap() {
@@ -47,10 +56,13 @@ public abstract class Mon {
     maThucAn = scanner.nextInt();
     System.out.print("Nhap gia mon: ");
     giaThucAn = scanner.nextDouble();
+    System.out.println("Nhap so luong: ");
+    soLuong = scanner.nextInt();
   }
   public void xuat() {
     System.out.println("Mon " + tenThucAn + ", ma thuc an: " + maThucAn);
     System.out.println("- Gia 1 mon: " + giaThucAn);
+    System.out.println("So Luong mon: " + soLuong);
   }
 
   abstract void dungNguyenLieu(KhoNguyenLieu n);
