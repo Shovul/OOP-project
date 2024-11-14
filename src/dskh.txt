@@ -1,0 +1,4 @@
+Nguyen Van A,1,1234,a@
+Nguyen Van B,2,4567,2@dasd
+sang,33,988,gg
+cd "c:\Users\ASUS\Desktop\group-project\OOP-project\src\" ; if ($?) { javac tempCodeRunnerFile.java } ; if ($?) { java tempCodeRunnerFile },123,123,123

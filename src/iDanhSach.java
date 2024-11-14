@@ -2,7 +2,7 @@
 
 public interface iDanhSach {
   public void them();
-  public void xoa(int n);
-  public void sua(int n);
-  public void timkiem(int n);
+  public void xoa();
+  public void sua();
+  public void timkiem();
 }
