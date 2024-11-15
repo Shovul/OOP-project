@@ -135,9 +135,73 @@ public class main {
     
     flag = true;
   }
-  public static void quanLyKhachHang() {
+  public static void quanLyKhachHang() 
+  {
+    DSKH danhsachKhachHang = new DSKH();
+    String infile = "";
+    String outfile = "";
+    do {
+      System.out.println("-- Quan ly Khach hang --");
+      System.out.println("1. Xuat danh sach khach hang ra man hinh");
+      System.out.println("2. Tim kiem khach hang");
+      System.out.println("3. Them khach hang");
+      System.out.println("4. Xoa khach hang");
+      System.out.println("5. Sua thong tin khach hang");
+      System.out.println("6. Nhap danh sach Khach hang tu file");
+      System.out.println("7. Xuat danh sach Khach hang ra file");
+      System.out.println("8. Cap nhat danh sach Khach hang");
+      System.out.println("9. Thoat quan ly khach hang");
+      n = sc.nextInt();
+      switch (n) {
+        case 1:
+          danhsachKhachHang.xuat();
+          break;
+        case 2:
+          danhsachKhachHang.timkiem();
+          break;
+        case 3:
+          danhsachKhachHang.them();
+          break;
+        case 4:
+          danhsachKhachHang.xoa();
+          break;
+        case 5:
+          danhsachKhachHang.sua();
+          break;
+        case 6: {
+          System.out.println("Nhap ten file chua thong tin khach hang ");
+          System.out.println("Vi du: dskh.txt ");
+          infile = sc.nextLine();
+          infile = sc.nextLine();
+          danhsachKhachHang.Readfile(infile);
+          break;
+        }
+        case 7: {
+          System.out.println("Nhap ten file se in cac thong tin khach hang");
+          System.out.println("Vi du: danhsachkhachhang.txt ");
+          outfile = sc.nextLine();
+          outfile = sc.nextLine();
+          danhsachKhachHang.Writefile(outfile);
+          break;
+        }
+        case 8: {
+          if(infile.equals("")) {
+            System.out.println("!Chua nhap file input!");
+            break;
+          }
+          System.out.println("Da cap nhap file thong tin khach hang");
+          danhsachKhachHang.Writefile(infile);
+          break;
+        }
+        case 9: {
+          flag = false;
+          break;
+        }
+      }
+    }while(flag);
     
-  }
+    flag = true;
+  }  
   public static void quanLyNguyenLieu() {
     KhoNguyenLieu khoNguyenLieu = new KhoNguyenLieu();
     String infile = "";

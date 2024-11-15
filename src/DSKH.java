@@ -56,32 +56,79 @@ public class DSKH implements iDanhSach
         n++;
     }
     @Override public void xoa()
-    {
+    {   
         Scanner sc = new Scanner(System.in);
-        System.out.println("Hay nhap ma khách hàng can xóa:");
-        int maKH = sc.nextInt();   
+        int luachon;
+        boolean timkiem = false; 
+        do{
+        System.out.println("Ban muon xoa khach hang theo thong tin nao?");
+        System.out.println("1: Xoa theo ma khach hang");
+        System.out.println("2: Xoa theo ten khach hang");
+        System.out.println("3: Quay lai lua chon truoc");
+        System.out.println("Hay nhap lua chon [1, 2, 3]");
+        luachon= sc.nextInt();
         sc.nextLine();
-        boolean timkiem = false; // cờ để kiểm tra xem tìm thấy mã khách hàng không
-        for(int i=0; i<n ; i++)
-        {
-            if(dskh[i].getMaKH()== maKH)
-            {
-                for (int j=i ; j < n-1 ; j++)
+        switch(luachon)
+        { 
+            case 1: 
+                System.out.println("Hay nhap ma khách hàng can xóa:");
+                int maKH = sc.nextInt();   
+                sc.nextLine();
+                for(int i=0; i<n ; i++)
                 {
-                    dskh[j] = dskh[j+1];
+                    if(dskh[i].getMaKH()== maKH)
+                    {
+                        for (int j=i ; j < n-1 ; j++)
+                        {
+                            dskh[j] = dskh[j+1];
+                        }
+                        dskh=Arrays.copyOf(dskh, n-1);
+                        n--;
+                        System.out.println("Xoa thanh cong!");
+                        timkiem = true; // đã tìm thấy mã khách để xóa
+                        break;
+                    }
                 }
-                dskh=Arrays.copyOf(dskh, n-1);
-                n--;
-                timkiem = true; // đã tìm thấy mã khách để xóa
+                if (timkiem==false)
+                {   
+                    System.out.println("Xoa khong thanh cong ! ");
+                    System.out.println("Không có khách hàng nào có ma: " + maKH);
+                }
                 break;
+            case 2:
+                System.out.println("Hay nhap ten khách hàng can xóa:");
+                String tenKH= sc.nextLine();
+                for (int i=0; i< n; i++)
+                {
+                    if(dskh[i].getTenKH().equals(tenKH))
+                    {
+                        for (int j=i ; j < n-1 ; j++)
+                        {
+                            dskh[j] = dskh[j+1];
+                        }
+                        dskh=Arrays.copyOf(dskh, n-1);
+                        n--;
+                        System.out.println("Xoa thanh cong!");
+                        timkiem = true; 
+                        break;
+                    }
+                }
+                 if (timkiem==false)
+                {   
+                    System.out.println("Xoa khong thanh cong ! ");
+                    System.out.println("Không có khách hàng nào có ten: " + tenKH);
+                }
+                break;
+            case 3:
+                    System.out.println("Chuong trinh se thoat ra!");
+                    break;
+            default:
+                        System.out.println("Lua chon khong hop le. Vui long chon lai");
+                        break;
             }
-        }
-        if (timkiem==false)
-        {   
-            System.out.println("Xoa khong thanh cong ! ");
-            System.out.println("Không có khách hàng nào có ma: " + maKH);
-        }
+        } while(luachon!=3);
     }
+      
     public void xoa(int maKH)
     {   
         boolean timkiem = false;
@@ -96,6 +143,7 @@ public class DSKH implements iDanhSach
                 dskh=Arrays.copyOf(dskh, n-1);
                 n--;
                 timkiem = true;
+                System.out.println("Xoa thanh cong!");
                 break;
             }
         }
@@ -105,71 +153,149 @@ public class DSKH implements iDanhSach
             System.out.println("Không có khách hàng nào có ma: " + maKH);
         }
     }
+    public void xoa(String tenKH)
+    {
+        Scanner sc = new Scanner(System.in);
+        boolean timkiem = false;
+        for (int i=0; i< n; i++)
+                {
+                    if(dskh[i].getTenKH().equals(tenKH))
+                    {
+                        for (int j=i ; j < n-1 ; j++)
+                        {
+                            dskh[j] = dskh[j+1];
+                        }
+                        dskh=Arrays.copyOf(dskh, n-1);
+                        n--;
+                        System.out.println("Xoa thanh cong!");
+                        timkiem = true; 
+                        break;
+                    }
+                }
+         if (timkiem==false)
+        {   
+            System.out.println("Xoa khong thanh cong ! ");
+            System.out.println("Không có khách hàng nào có ten: " + tenKH);
+        }
+    }
     @Override public void sua()
+    {   
+        Scanner sc = new Scanner (System.in);
+        boolean timkiem = false;
+        int luachon;
+        do{
+        System.out.println("Ban muon sua thong tin khach hang theo thong tin nao?");
+        System.out.println("1: Sua theo ten khach hang");
+        System.out.println("2: Sua theo ma khach hang");
+        System.out.println("3: Quay lai lua chon truoc");
+        System.out.println("Hay nhap lua chon [1, 2, 3]");
+        luachon= sc.nextInt();
+        sc.nextLine();
+        switch(luachon)
+        {   
+            case 1: // theo ten     
+                System.out.println("Hay nhap ten khach hang ban can sua");
+                String tenKH=sc.nextLine();
+                for(int l = 0; l < n; l++)
+                {
+                    if(dskh[l].getTenKH().equals(tenKH))
+                    {
+                    suaThongTinKhachHang(dskh[l]);
+                    timkiem = true; 
+                    break;       
+                   }
+                }
+                if (timkiem==false)
+                {   
+                    System.out.println("Sua khong thanh cong ! ");
+                    System.out.println("Không có khách hàng nào có ten: " + tenKH);
+                }
+                break;
+            case 2: // theo ma
+                System.out.println("Hay nhap ma khach hang ban can sua");
+                int maKH =sc. nextInt();
+                sc.nextLine();
+                for(int i=0 ; i < n; i++)
+                {
+                    if(dskh[i].getMaKH()== maKH)
+                    {
+                    suaThongTinKhachHang(dskh[i]);
+                    timkiem = true; 
+                    break;
+                    }  
+                }        
+                if (timkiem==false)
+                {   
+                    System.out.println("Sua khong thanh cong ! ");
+                    System.out.println("Không có khách hàng nào có ma: " + maKH);
+                }
+            default:
+                System.out.println("Lua chon khong hop le. Vui long chon lai.");
+                break;
+            }
+        }while(luachon!=3);
+    }
+    public void suaThongTinKhachHang(KHACHHANG kh)
     {
         Scanner sc = new Scanner (System.in);
-        System.out.println("Nhap ma khach hang ban muon sua");
-        int maKH = sc.nextInt();
+        System.out.println("Khach hang: " + kh.getTenKH());
+        System.out.println("Hay chon thong tin ma ban muon sua: ");
+        System.out.println("1: Sua ten khach hang ");
+        System.out.println("2: Sua ma khach hang ");
+        System.out.println("3: Sua so dien thoai ");
+        System.out.println("4: Sua dia chi email ");
+        System.out.println("5: Sua toan bo thong tin [Ten/Ma/SDT/Email]");
+        System.out.println("6: Quay lai lua chon truoc");
+        System.out.println("Nhap lua chon [1 ,2 ,3 ,4 ,5 ,6]:");
+        int luachon=sc.nextInt();
         sc.nextLine();
-
-        boolean timkiem = false;
-
-        for(int i=0 ; i < n; i++)
+        switch(luachon)
         {
-            if(dskh[i].getMaKH()== maKH)
-            {
-                System.out.println("Hay chon thong tin ma ban muon sua: ");
-                System.out.println("1: Sua ten khach hang ");
-                System.out.println("2: Sua so dien thoai ");
-                System.out.println("3: Sua dia chi email ");
-                System.out.println("4: Sua toan bo thong tin [Ten/SDT/Email]");
-                System.out.println("Nhap lua chon [1 ,2 ,3, 4]:");
-
-                int luachon = sc.nextInt();
-                sc.nextLine();
-                switch(luachon)
-                {
-                    case 1: // Sua ten
-                        System.out.println("Hay nhap ten moi");
-                        dskh[i].setTenKH(sc.nextLine());
-                        System.out.println("Ten khach hang da duoc cap nhat");
-                        break;
-                    case 2: // Sua sdt
-                        System.out.println("Hay nhap So dien thoai moi");
-                        dskh[i].setsdtKH(sc.nextInt());
-                        sc.nextLine();
-                        System.out.println("So dien thoai khach hang da duoc cap nhat");
-                        break;
-                    case 3: // sua email
-                        System.out.println("Hay nhap dia chi Email moi");
-                        dskh[i].setemailKH(sc.nextLine());
-                        System.out.println("Ten khach hang da duoc cap nhat");
-                        break;
-                    case 4: // sua toan bo
-                        System.out.println("Hay nhap ten moi");
-                        dskh[i].setTenKH(sc.nextLine());
-                        System.out.println("Ten khach hang da duoc cap nhat");
-                        System.out.println("Hay nhap So dien thoai moi");
-                        dskh[i].setsdtKH(sc.nextInt());
-                        sc.nextLine();
-                        System.out.println("So dien thoai khach hang da duoc cap nhat");
-                         System.out.println("Hay nhap dia chi Email moi");
-                        dskh[i].setemailKH(sc.nextLine());
-                        System.out.println("Ten khach hang da duoc cap nhat");
-                        break;
-                    default:
-                        System.out.println("Lua chon khong hop le. Vui long chon lai");
-                        break;
-                }
-            timkiem = true; 
-            break;
-            }  
-        }        
-        if (timkiem==false)
-        {   
-            System.out.println("Sua khong thanh cong ! ");
-            System.out.println("Không có khách hàng nào có ma: " + maKH);
-        }
+        case 1:// sua ten
+        System.out.println("Hay nhap ten moi");
+        kh.setTenKH(sc.nextLine());
+        System.out.println("Ten khach hang da duoc cap nhat");
+        break;
+        case 2: // sua ma
+        System.out.println("Nhap ma khach hang moi");
+        kh.setMaKH(sc.nextInt());
+        System.out.println("Ma khach hang da duoc cap nhat");
+        break;
+        case 3: // sua sdt
+        System.out.println("Nhap so dien thoai moi");
+        kh.setsdtKH(sc.nextInt());
+        sc.nextLine();
+        System.out.println("So dien thoai da duoc cap nhat");
+        break;
+        case 4: // sua dia chi
+        System.out.println("Nhap dia chi email moi");
+        kh.setemailKH(sc.nextLine());
+        System.out.println("Dia chi email da duoc cap nhat");
+        break;
+        case 5: // sua toan bo thong tin
+        System.out.println("Hay nhap ten moi");
+        kh.setTenKH(sc.nextLine());
+        System.out.println("Ten khach hang da duoc cap nhat");
+        System.out.println("Nhap ma khach hang moi");
+        kh.setMaKH(sc.nextInt());
+        System.out.println("Ma khach hang da duoc cap nhat");
+        System.out.println("Nhap so dien thoai moi");
+        kh.setsdtKH(sc.nextInt());
+        sc.nextLine();
+        System.out.println("So dien thoai da duoc cap nhat");
+        System.out.println("Nhap dia chi email moi");
+        kh.setemailKH(sc.nextLine());
+        System.out.println("Dia chi email da duoc cap nhat");
+        System.out.println("Toan bo thong tin da duoc cap nhat!");
+        break;
+        case 6:
+        System.out.println("Chuong trinh se thoat ra!");
+        break;
+        default:
+        System.out.println("Lua chon khong hop le. Vui long chon lai");
+        suaThongTinKhachHang(kh);
+        break;
+        }          
     }
     public void sua(int maKH)
     {   
@@ -232,19 +358,84 @@ public class DSKH implements iDanhSach
             System.out.println("Không có khách hàng nào có ma: " + maKH);
         }
     }
+    public void sua(String tenKH)
+    {
+        Scanner sc = new Scanner(System.in);
+        boolean timkiem=false;
+        for(int i = 0; i < n; i++)
+                {
+                    if(dskh[i].getTenKH().equals(tenKH))
+                    {
+                        System.out.println("Hay chon thong tin ma ban muon sua: ");
+                        System.out.println("1: Sua ma khach hang ");
+                        System.out.println("2: Sua so dien thoai ");
+                        System.out.println("3: Sua dia chi email ");
+                        System.out.println("4: Sua toan bo thong tin [Ma/SDT/Email]");
+                        System.out.println("5: Quay lai lua chon truoc");
+                        System.out.println("Nhap lua chon [1 ,2 ,3, 4, 5]:");
+                        int luachon=sc.nextInt();
+                        sc.nextLine();
+                        switch(luachon)
+                        {
+                            case 1: // sua ma
+                                System.out.println("Nhap ma khach hang moi");
+                                dskh[i].setMaKH(sc.nextInt());
+                                System.out.println("Ma khach hang da duoc cap nhat");
+                                break;
+                            case 2: // sua sdt
+                                System.out.println("Nhap so dien thoai moi");
+                                dskh[i].setsdtKH(sc.nextInt());
+                                System.out.println("So dien thoai da duoc cap nhat");
+                                break;
+                            case 3: // sua dia chi
+                                System.out.println("Nhap dia chi email moi");
+                                dskh[i].setemailKH(sc.nextLine());
+                                System.out.println("Dia chi email da duoc cap nhat");
+                                break;
+                            case 4: // sua toan bo thong tin
+                                System.out.println("Nhap ma khach hang moi");
+                                dskh[i].setMaKH(sc.nextInt());
+                                System.out.println("Ma khach hang da duoc cap nhat");
+                                System.out.println("Nhap so dien thoai moi");
+                                dskh[i].setsdtKH(sc.nextInt());
+                                System.out.println("So dien thoai da duoc cap nhat");
+                                System.out.println("Nhap dia chi email moi");
+                                dskh[i].setemailKH(sc.nextLine());
+                                System.out.println("Dia chi email da duoc cap nhat");
+                                break;
+                            case 5:
+                                System.out.println("Chuong trinh se thoat ra!");
+                                break;
+                            default:
+                                System.out.println("Lua chon khong hop le. Vui long chon lai");
+                                break;
+                        }
+                    timkiem = true; 
+                    break;       
+                   }
+                }
+                if (timkiem==false)
+                {   
+                    System.out.println("Sua khong thanh cong ! ");
+                    System.out.println("Không có khách hàng nào có ten: " + tenKH);
+                }
+    }
     @Override public void timkiem()
     {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Chon cach tìm kiem:");
-        System.out.println("1. Tìm kiem theo ma khách hàng");
-        System.out.println("2. Tìm kiem theo ten khách hàng");
-        System.out.print("Nhap lua chon [1, 2]: ");
-
-        int luachon = sc.nextInt();
-        sc.nextLine();
-
+        int luachon;
         boolean timkiem = false;
 
+        do{
+        System.out.println("Chon cach tim kiem:");
+        System.out.println("1. Tim kiem theo ma khách hàng");
+        System.out.println("2. Tim kiem theo ten khách hàng");
+        System.out.println("3. Quay lai lua chon truoc");
+
+        System.out.print("Nhap lua chon [1, 2, 3]: ");
+
+        luachon = sc.nextInt();
+        sc.nextLine();
         switch(luachon)
         {
             case 1: // theo ma
@@ -276,15 +467,19 @@ public class DSKH implements iDanhSach
                     }
                 }
                 break;
+            case 3:
+                System.out.println("Chuong trinh se thoat ra!");
+                break;
             default:
-            System.out.println("Lua chon khong hop le, vui long nhap lai");
-            return;
+                System.out.println("Lua chon khong hop le, vui long nhap lai");
+                break;
         }
         if (timkiem==false)
         {   
             System.out.println("Tim kiem khong thanh cong ! ");
             System.out.println("Không tim thay khach hang");
         }
+        } while(luachon!=3);
     }
 
     public void timkiem(int maKH)
@@ -307,22 +502,26 @@ public class DSKH implements iDanhSach
             System.out.println("Không tim thay khach hang");
         }
     }
-    public void xemDSKH()
+    public void timkiem(String tenKH)
     {
-        if (n==0)
+        Scanner sc = new Scanner(System.in);
+        boolean timkiem= false;
+
+        for (int i=0; i < n; i++)
             {
-                System.out.println("Danh sach khach hang hien dang trong");
+                if(dskh[i].getTenKH().equals(tenKH))
+                    {
+                        System.out.println("Da tim thay khach hang co ten la " + tenKH);
+                        dskh[i].xuat();
+                        timkiem = true;
+                        break;
+                    }
             }
-        else 
-            {
-                System.out.println("Danh sach khach hang la:");
-                for(int i=0; i<n ; i++)
-                {
-                    System.out.println("Khach hang thu " + (i+1) + " la:");
-                    dskh[i].xuat();
-                    
-                }
-            }
+        if (timkiem==false)
+        {   
+            System.out.println("Tim kiem khong thanh cong ! ");
+            System.out.println("Không tim thay khach hang");
+        }
     }
     public void Readfile(String danhsachkhachhang)
     {
