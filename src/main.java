@@ -10,9 +10,10 @@ public class main {
   static DSMon danhsachMon = new DSMon();
   static KhoNguyenLieu khoNguyenLieu = new KhoNguyenLieu();
   static DSHoaDon danhsachHoaDon = new DSHoaDon();
+  static DSKH danhsachKhachHang = new DSKH();
   
   public static void quanLyNhanVien() {
-    String infile = "";
+    String infile = "dsnv.txt";
     String outfile = "";
     do {
       System.out.println("-- Quan ly nhan vien --");
@@ -75,7 +76,7 @@ public class main {
     flag = true;
   }
   public static void quanLyMonAn() {
-    String infile = "";
+    String infile = "menu.txt";
     String outfile = "";
     do {
       System.out.println("-- Quan ly menu quan --");
@@ -137,10 +138,8 @@ public class main {
     
     flag = true;
   }
-  public static void quanLyKhachHang() 
-  {
-    DSKH danhsachKhachHang = new DSKH();
-    String infile = "";
+  public static void quanLyKhachHang() {
+    String infile = "dskh.txt";
     String outfile = "";
     do {
       System.out.println("-- Quan ly Khach hang --");
@@ -203,9 +202,9 @@ public class main {
     }while(flag);
     
     flag = true;
-  }  
+  }
   public static void quanLyNguyenLieu() {
-    String infile = "";
+    String infile = "kho.txt";
     String outfile = "";
     do {
       System.out.println("-- Quan ly kho nguyen lieu --");
@@ -275,7 +274,7 @@ public class main {
   }
   public static void quanLyDonHang() {
     
-    String infile = "";
+    String infile = "donhang.txt";
     String outfile = "";
     do {
       System.out.println("-- Quan ly hoa don --");
@@ -341,9 +340,10 @@ public class main {
     danhsachNhanVien.addByFile("dsnv.txt");
     danhsachMon.addByFile("menu.txt");
     danhsachHoaDon.addByFile("hoadon.txt");
+    danhsachKhachHang.Readfile("dskh.txt");
     do {
       // System.out.print("\033[H\033[2J");  
-      System.out.println("Chon de quan ly");
+      System.out.println("-- Chon de quan ly --");
       System.out.println("1. Danh sach nhan vien");
       System.out.println("2. Danh sach mon an");
       System.out.println("3. Danh sach khach hang");

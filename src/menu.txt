@@ -2,3 +2,4 @@ doan/4/thit bo,2,banh,2,phomai,2,salad,3/6001/Buger bo/100000.0
 nuoc/s/coca cola/500/7001/Coca cola/20000.0
 doan/1/khoai tay,40/6002/Khoai tay/25000.0
 nuoc/m/pepsi/700/7002/Pepsi/25000.0
+nuoc/m/coca cola/800/7002/Coca cola/30000.0
