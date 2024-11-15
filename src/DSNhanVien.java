@@ -36,7 +36,7 @@ public class DSNhanVien implements iDanhSach{
     System.out.println("Nhap 1, 2 hoac 3: ");
     Scanner scanner = new Scanner(System.in);
     int choose = scanner.nextInt();
-    switch (choose) {
+    switch (choose){
       case 1:
         DSNV[length] = new DauBep();
         DSNV[length].nhap();
