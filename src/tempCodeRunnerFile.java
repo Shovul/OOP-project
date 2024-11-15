@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+u
+=======
 
           khoNguyenLieu.sua();
           break;
@@ -8,3 +11,4 @@
           khoNguyenLieu.addByFile(infile);
           break;
         }
+>>>>>>> 213f5185d63bb931be6bdc84e6aef079b0d99f5a

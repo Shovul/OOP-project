@@ -411,6 +411,7 @@ public class DSNhanVien implements iDanhSach{
   //in danh sach
   public void xuat() {
     for(int i=0; i<length; i++) {
+      System.out.println("====================");
       DSNV[i].xuat();
     }
   }
@@ -431,21 +432,22 @@ public class DSNhanVien implements iDanhSach{
           DSNV[length] = new ThuNgan();
           ((ThuNgan)DSNV[length]).setHoaDon(Integer.parseInt(arrayLine[1]));
         }
-        else if (arrayLine[0].equalsIgnoreCase("bb")) {
+        else {
           DSNV[length] = new BoiBan();
           ((BoiBan)DSNV[length]).setSoBanPhucVu(Integer.parseInt(arrayLine[1]));
         }
         DSNV[length].setMaNV(Integer.parseInt(arrayLine[2]));
         DSNV[length].setTen(arrayLine[3]);
         DSNV[length].setLuong(Double.parseDouble(arrayLine[4]));
-        if(arrayLine[5].equalsIgnoreCase("ft")) {
+        DSNV[length].setThuong(Double.parseDouble(arrayLine[5]));
+        if(arrayLine[6].equalsIgnoreCase("ft")) {
           DSNV[length].setFulltime();
         }
-        else if(arrayLine[5].equalsIgnoreCase("pt")){
+        else if(arrayLine[6].equalsIgnoreCase("pt")){
           DSNV[length].setParttime();
         }
-        DSNV[length].setNgayLamViec(Integer.parseInt(arrayLine[6]));
-        DSNV[length].setNgayNghi(Integer.parseInt(arrayLine[7]));
+        DSNV[length].setNgayLamViec(Integer.parseInt(arrayLine[7]));
+        DSNV[length].setNgayNghi(Integer.parseInt(arrayLine[8]));
         line = file.readLine();
         length++;
       }
@@ -471,15 +473,15 @@ public class DSNhanVien implements iDanhSach{
       FileWriter file = new FileWriter(filePath);
       for(int i=0; i<length; i++) {
         if(DSNV[i] instanceof DauBep) {
-          file.write("db/"+((DauBep)DSNV[length]).getSoLuongMon()+"/");
+          file.write("db/"+((DauBep)DSNV[i]).getSoLuongMon()+"/");
         }
         if(DSNV[i] instanceof BoiBan) {
-          file.write("bb/"+((BoiBan)DSNV[length]).getSoBanPhucVu()+"/");
+          file.write("bb/"+((BoiBan)DSNV[i]).getSoBanPhucVu()+"/");
         }
         if(DSNV[i] instanceof ThuNgan) {
-          file.write("tt/"+((ThuNgan)DSNV[length]).getHoaDon()+"/");
+          file.write("tt/"+((ThuNgan)DSNV[i]).getHoaDon()+"/");
         }
-        file.write(DSNV[i].getMaNV()+"/"+DSNV[i].getTen()+"/"+DSNV[i].getLuong()+"/"+printFulltime(DSNV[i].getFulltime())+"/"+DSNV[i].getNgayLamViec()+"/"+DSNV[i].getNgayNghi()+"\n");
+        file.write(DSNV[i].getMaNV()+"/"+DSNV[i].getTen()+"/"+DSNV[i].getLuong()+"/"+DSNV[i].getThuong()+"/"+printFulltime(DSNV[i].getFulltime())+"/"+DSNV[i].getNgayLamViec()+"/"+DSNV[i].getNgayNghi()+"\n");
       }
       file.close();
     }

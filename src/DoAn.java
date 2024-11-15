@@ -25,10 +25,11 @@ public class DoAn extends Mon {
   
   public void setNguyenLieuLam(int i, String ten, int soLuong) {
       nguyenlieuLam[i] =new NguyenLieu();
-      nguyenlieuLam[i].setNguyenLieu(ten);
+      nguyenlieuLam[i].setTen(ten);
       nguyenlieuLam[i].setSoLuong(soLuong);
   }
-  public void setNguyenLieuLam(NguyenLieu[] nguyenlieu) {
+  public void setNguyenLieuLam(int soLuongNguyenLieu, NguyenLieu[] nguyenlieu) {
+    soNguyenLieu = soLuongNguyenLieu;
     nguyenlieuLam = nguyenlieu;
   }
   public void setSoNguyenLieu(int soLuongNguyenLieu) {
