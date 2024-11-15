@@ -24,7 +24,7 @@ public class Nuoc extends Mon{
     size = s;
   }
   public void setLoaiNuoc(String ten, int dungTich) {
-    loaiNuoc.setNguyenLieu(ten);
+    loaiNuoc.setTen(ten);
     loaiNuoc.setSoLuong(dungTich);
   }
 

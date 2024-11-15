@@ -1,2 +1,1 @@
-
-          infile = sc
+u

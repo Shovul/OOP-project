@@ -295,10 +295,21 @@ public class DSMon implements iDanhSach {
   //in danh sach
   public void xuat() {
     for(int i=0; i<length; i++) {
+      System.out.println("====================");
       danhSachMon[i].xuat();
     }
   }
 
+  public Mon getMon(String tenMon) {
+    for(int i=0; i<length; i++) {
+      if(danhSachMon[i].tenThucAn.equals(tenMon)) {
+        return danhSachMon[i];
+      }
+    }
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Nhap lai ten mon: ");
+    return getMon(sc.nextLine());
+  }
   
   public void addByFile(String filePath) {
     try {
