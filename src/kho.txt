@@ -1,6 +1,17 @@
-thit bo/100
-salad/200
+coca cola/200000
+soda/200000
+cafe/300000
+tra/300000
+sua/120000
+nuoc/100000
+banh mi/500
+trung/700
 phomai/200
-banh/500
-coca cola/10000
-pepsi/10000
+khoai tay/100
+thit ga/170
+thit heo/100
+thit bo/150
+dua leo/200
+ca chua/200
+salad/200
+com/100

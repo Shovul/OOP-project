@@ -5,36 +5,55 @@ import java.util.Scanner;
 public class HoaDon {
     private int MaHD;
     private String NgayInDon;
+    private ThuNgan thuNgan;
     private KHACHHANG Khach;
-    private HashMap<Mon, Integer> DSmon;//hashmap lưu món ăn và số lượng
+    private HashMap<Mon, Integer> danhsachMon;//hashmap lưu món ăn và số lượng
     private double TongTien = 0; //lưu tổng tiền của hóa đơn
 
     public HoaDon(){
         MaHD = 0;
         NgayInDon = "";
         Khach = new KHACHHANG();
+        thuNgan = new ThuNgan();
         TongTien = 0;
-        DSmon = new HashMap<>();
+        danhsachMon = new HashMap<>();
     }
 
-    public HoaDon(int MaHD, String NgayInDon, KHACHHANG Khach, HashMap<Mon, Integer> DSmon, double TongTien){
+    public HoaDon(int MaHD, String NgayInDon, KHACHHANG Khach, ThuNgan thuNgan, HashMap<Mon, Integer> danhsachMon, double TongTien){
         this.MaHD = MaHD;
         this.NgayInDon = NgayInDon;
         this.TongTien = TongTien;
         this.Khach = Khach;
-        this.DSmon = DSmon;
+        this.thuNgan = thuNgan;
+        this.danhsachMon = danhsachMon;
         tinhTongTien();
     }
 
     public void tinhTongTien(){
-        DSmon.forEach((mon, soLuong) -> { TongTien += mon.giaThucAn * soLuong; });
+        danhsachMon.forEach((mon, soLuong) -> { TongTien += mon.giaThucAn * soLuong; });
     }
 
     public void Nhap(){
+        Scanner hd = new Scanner(System.in);
+        
+        DSNhanVien danhsachNhanVien = new DSNhanVien();
+        danhsachNhanVien.addByFile("dsnv.txt");
         DSMon menu = new DSMon();
         menu.addByFile("menu.txt");
+        KhoNguyenLieu kho = new KhoNguyenLieu();
+        kho.addByFile("kho.txt");
+        DSKH danhsachKhachHang = new DSKH();
+        danhsachKhachHang.Readfile("dskh.txt");
 
-        Scanner hd = new Scanner(System.in);
+        System.out.print("Ten thu ngan tiep khach: ");
+        thuNgan.setTen(hd.nextLine());
+        danhsachNhanVien.tangSoHoaDon(thuNgan.getTen());
+        System.out.print("Ten phuc vu ban: ");
+        danhsachNhanVien.tangSoBanPhucVu(hd.nextLine());
+        System.out.print("Ten dau bep nau mon: ");
+        String daubep = hd.nextLine();
+    
+
         System.out.print("Nhập mã hóa đơn: ");
         MaHD = hd.nextInt();
         hd.nextLine();
@@ -43,23 +62,34 @@ public class HoaDon {
         Khach = new KHACHHANG();
         System.out.print("Nhập tên khách hàng: ");
         Khach.setTenKH(hd.nextLine());
+        danhsachKhachHang.them(Khach);
         System.out.print("Nhập số lượng món: ");
         int soLuongMon = hd.nextInt();
         hd.nextLine();
         for(int i = 0; i < soLuongMon; i++){
-            System.out.print("Nhập tên món thứ " + (i + 1) + ":");
+            System.out.print("Nhập tên món thứ " + (i + 1) + ": ");
             Mon mon = menu.getMon(hd.nextLine());
             if(mon instanceof Nuoc) {
                 System.out.print("Nhập size " + mon.tenThucAn + ": ");
-                ((Nuoc)mon).setSize(hd.next().charAt(0));
+                char size = '@';
+                do {
+                    size = hd.next().charAt(0);
+                }while(size != 's' || size != 'm' ||size != 'l');
+                ((Nuoc)mon).setSize(size);
             }
-            mon.xuat();
+            System.out.println(mon.getTenThucAn() + " " + mon.getGiaThucAn());
             System.out.print("Nhập số lượng: ");
             int soLuong = hd.nextInt();
             hd.nextLine();
 
-            DSmon.put(mon, soLuong); // thêm món và số lượng vào hashmap
+            danhsachMon.put(mon, soLuong); // thêm món và số lượng vào hashmap
         }
+        danhsachMon.forEach((mon, soLuong) -> {
+            danhsachNhanVien.tangSoMonNau(daubep, mon, kho, soLuong);
+        });
+        danhsachKhachHang.Writefile("dskh.txt");
+        danhsachNhanVien.printListInFile("dsnv.txt");
+        kho.printListInFile("kho.txt");
         tinhTongTien();
     }
 
@@ -68,7 +98,7 @@ public class HoaDon {
         System.out.println("Ngày in đơn: " + NgayInDon);
         System.out.println("Tên khách hàng: " + Khach.getTenKH());
         System.out.println("Danh sách món: ");
-        DSmon.forEach((mon, soLuong) -> {
+        danhsachMon.forEach((mon, soLuong) -> {
             System.out.print("Mon " + mon.getTenThucAn() + " ");
             if(mon instanceof Nuoc) {
                 System.out.println(((Nuoc)mon).getSize());
@@ -104,34 +134,39 @@ public class HoaDon {
         Khach.setTenKH(ten);
     }
 
+    public double getTongTien() {
+        return TongTien;
+    }
+
     public HashMap<Mon, Integer> getDSmon(){
-        return DSmon;
+        return danhsachMon;
     }
     public void setMon(DoAn mon, int soLuong){
-        if(DSmon.containsKey(mon))
+        if(danhsachMon.containsKey(mon))
         {
-            DSmon.merge(mon, soLuong, (soLuongCu, soLuongMoi) -> soLuongCu + soLuongMoi);
+            danhsachMon.merge(mon, soLuong, (soLuongCu, soLuongMoi) -> soLuongCu + soLuongMoi);
         }
         else{
-            DSmon.put(mon, soLuong);
+            danhsachMon.put(mon, soLuong);
         }
     }
     public void setMon(Nuoc mon, int soLuong){
-        if(DSmon.containsKey(mon))
+        if(danhsachMon.containsKey(mon))
         {
-            DSmon.merge(mon, soLuong, (soLuongCu, soLuongMoi) -> soLuongCu + soLuongMoi);
+            danhsachMon.merge(mon, soLuong, (soLuongCu, soLuongMoi) -> soLuongCu + soLuongMoi);
         }
         else{
-            DSmon.put(mon, soLuong);
+            danhsachMon.put(mon, soLuong);
         }
     }
     public void setMon(Mon mon, int soLuong){
-        if(DSmon.containsKey(mon))
+        if(danhsachMon.containsKey(mon))
         {
-            DSmon.merge(mon, soLuong, (soLuongCu, soLuongMoi) -> soLuongCu + soLuongMoi);
+            danhsachMon.merge(mon, soLuong, (soLuongCu, soLuongMoi) -> soLuongCu + soLuongMoi);
         }
         else{
-            DSmon.put(mon, soLuong);
+            danhsachMon.put(mon, soLuong);
         }
     }
+    
 }

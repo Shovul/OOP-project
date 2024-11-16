@@ -1,7 +1,20 @@
-db/12/101/Pham Nguyen Thanh Sang/1.0E7/100000.0/ft/36/0
-bb/2/202/Nguyen Huu Dang Khoi/6000000.0/20000.0/ft/0/0
-bb/0/103/Huynh Le Huy Hien/5000000.0/10000.0/pt/30/2
-bb/12/103/Bladudu/1.0E8/30000.0/pt/12/1
-bb/0/105/a/1000.0/0.0/ft/0/0
-db/100/50011/among us/1.0E10/1000.0/pt/200/0
-bb/20/107/Le Ngoc Nu/1.0E7/60000.0/ft/20/0
+db/0/10001/Tran Thi Thu An/10000000/0/ft/0/0
+db/0/10002/Nguyen Thi Lan Anh/10000000/0/pt/0/0
+db/0/10003/Le Thi Bao Trang/10000000/0/pt/0/0
+db/0/10004/Pham Minh Tu/10000000/0/ft/0/0
+db/0/10005/Hoang Thi Mai Linh/10000000/0/ft/0/0
+db/0/10006/Bui Thi Lan/10000000/0/pt/0/0
+tn/0/20001/Vu Thi Minh Tuan/8000000/0/ft/0/0
+tn/0/20002/Duong Thi Kim Anh/8000000/0/ft/0/0
+tn/0/20003/Ngo Thi Thu Hien/8000000/0/pt/0/0
+tn/0/20004/Lam Thi Thanh Hoa/8000000/0/pt/0/0
+tn/0/20005/Cao Thi Mai/8000000/0/pt/0/0
+tn/0/20006/Phan Thi Thu Huong/8000000/0/ft/0/0
+tn/0/20007/Do Thi Lan Anh/8000000/0/ft/0/0
+bb/0/30001/Vu Thi Thanh Mai/7500000/0/ft/0/0
+bb/0/30002/Tran Thi Kim Chi/7500000/0/pt/0/0
+bb/0/30003/Le Thi Minh Chau/7500000/0/pt/0/0
+bb/0/30004/Nguyen Thi Bao Lan/7500000/0/ft/0/0
+bb/0/30005/Hoang Thi Thu Trang/7500000/0/ft/0/0
+bb/0/30006/Pham Thi Lan Anh/7500000/0/pt/0/0
+bb/0/30007/Ngo Thi Lan Anh/7500000/0/ft/0/0

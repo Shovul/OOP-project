@@ -1,5 +1,36 @@
-doan/4/thit bo,2,banh,2,phomai,2,salad,3/6001/Buger bo/100000.0
-nuoc/s/coca cola/500/7001/Coca cola/20000.0
-doan/1/khoai tay,40/6002/Khoai tay/25000.0
-nuoc/m/pepsi/700/7002/Pepsi/25000.0
-nuoc/m/coca cola/800/7002/Coca cola/30000.0
+doan/4/banh mi,2,thit bo,1,salad,1,ca chua,2/400001/Burger bo/49000.0
+doan/5/banh mi,3,thit bo,2,salad,2,ca chua,4,pho mai,2/400002/Burger bo 2 tang/76000.0
+doan/5/banh mi,2,thit bo,1,salad,2,ca chua,3,phomai,1/400003/Burger bo cheese/59000.0
+doan/1/thit ga,2/400004/Ga 2 mieng/89000.0
+doan/1/thit ga,3/400005/Ga 3 mieng/133000.0
+doan/1/thit ga,6/400006/Ga 6 mieng/261000.0
+doan/5/com,1,thit ga,1,salad,3,ca chua,4,dua leo,3/400007/Com ga/59000.0
+doan/5/com,1,thit heo,2,salad,2,ca chua,3,dua leo,4/40008/Com ba roi/62000.0
+doan/1/thit ga,2/400009/Ga vien/79000.0
+doan/1/khoai tay,2/400010/Khoai tay/32000.0
+doan/3/banh mi,1,phomai,2,trung,1/400011/Golden balls/35000.0
+doan/3/banh mi,2,phomai,3,trung,1/400012/Cheese sticks/40000.0
+doan/2/banh mi,1,trung,2/400013/Banh trung/32000.0
+doan/1/sua,280/400014/Kem vanilla/10000.0
+doan/2/banh mi,2,sua,460/400015/Banh kem/39000.0
+nuoc/l/coca cola/500/500001/Coca cola/20000.0
+nuoc/m/coca cola/500/500002/Coca cola/25000.0
+nuoc/l/coca cola/500/500003/Coca cola/28000.0
+nuoc/s/coca cola/450/500004/Coca cola zero/20000.0
+nuoc/m/coca cola/450/500005/Coca cola zero/25000.0
+nuoc/l/coca cola/450/500006/Coca cola zero/28000.0
+nuoc/m/soda/500/500007/Soda viet quoc/29000.0
+nuoc/l/soda/500/500008/Soda viet quoc/33000.0
+nuoc/s/cafe/300/500009/Cafe/18000.0
+nuoc/m/cafe/300/500010/Cafe/21000.0
+nuoc/s/tra/480/500011/Tra dao/22000.0
+nuoc/m/tra/480/500012/Tra dao/25000.0
+nuoc/l/tra/480/500013/Tra dao/27000.0
+nuoc/s/tra/480/500014/Tra chanh/21000.0
+nuoc/m/tra/480/500015/Tra chanh/23000.0
+nuoc/l/tra/480/500016/Tra chanh/26000.0
+nuoc/s/sua/350/500017/Sua tuoi/12000.0
+nuoc/m/sua/350/500018/Sua tuoi/15000.0
+nuoc/s/nuoc/400/500019/Nuoc suoi/10000.0
+nuoc/m/nuoc/400/500020/Nuoc suoi/12000.0
+nuoc/l/nuoc/400/500021/Nuoc suoi/13000.0

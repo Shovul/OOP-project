@@ -415,6 +415,82 @@ public class DSNhanVien implements iDanhSach{
       DSNV[i].xuat();
     }
   }
+  public void xuatNgan() {
+    for(int i=0; i<length; i++) {
+      System.out.println("====================");
+      System.out.println(DSNV[i].getTen() + "\t" + DSNV[i].getLuong());
+    }
+  }
+
+  public void tangSoMonNau(String ten, Mon mon, KhoNguyenLieu kho, int n) {
+    boolean flag = true;
+    for(int i=0; i<length; i++) {
+      if(DSNV[i].hoTen.equalsIgnoreCase(ten) && DSNV[i] instanceof DauBep) {
+        flag = false;
+        if (mon instanceof Nuoc) {
+          ((DauBep)DSNV[i]).nauMon((Nuoc)mon, kho, n);
+        }
+        else {
+          ((DauBep)DSNV[i]).nauMon((DoAn)mon, kho, n);
+        }
+      }
+    }
+    if(flag) {
+      System.out.println("Khong tim thay dau bep ten " + ten);
+      Scanner sc = new Scanner(System.in);
+      tangSoMonNau(sc.nextLine(), mon, kho, n);
+    }
+  }
+  public void tangSoHoaDon(String ten) {
+    boolean flag = true;
+    for(int i=0; i<length; i++) {
+      if(DSNV[i].hoTen.equalsIgnoreCase(ten) && DSNV[i] instanceof ThuNgan) {
+        flag = false;
+        ((ThuNgan)DSNV[i]).setHoaDon(((ThuNgan)DSNV[i]).getHoaDon() + 1);
+        DSNV[i].addNgayLamViec();
+      }
+    }
+    if(flag) {
+      System.out.println("Khong tim thay thu ngan ten " + ten);
+      Scanner sc = new Scanner(System.in);
+      tangSoHoaDon(sc.nextLine());
+    }
+  }
+  public void tangSoBanPhucVu(String ten) {
+    boolean flag = true;
+    for(int i=0; i<length; i++) {
+      if(DSNV[i].hoTen.equalsIgnoreCase(ten) && DSNV[i] instanceof BoiBan) {
+        flag = false;
+        ((BoiBan)DSNV[i]).setSoBanPhucVu(((BoiBan)DSNV[i]).getSoBanPhucVu() + 1);
+        DSNV[i].addNgayLamViec();
+      }
+    }
+    if(flag) {
+      System.out.println("Khong tim thay boi ban ten " + ten);
+      Scanner sc = new Scanner(System.in);
+      tangSoBanPhucVu(sc.nextLine());
+    }
+  }
+
+  public void xemNhanVienNghiHon(int ngay) {
+    for(int i=0; i<length; i++) {
+      if(DSNV[i].getNgayNghi() >= ngay) {
+        System.out.println("====================");
+        System.out.println(DSNV[i].getTen() + "\t" + DSNV[i].getNgayNghi());
+        DSNV[i].addNgayLamViec();
+      }
+    }
+  }
+
+  public void danhDauNghi(String ten) {
+    for(int i=0; i<length; i++) {
+      if(DSNV[i].hoTen.equalsIgnoreCase(ten)) {
+        DSNV[i].addNgayNghi();
+        break;
+      }
+    }
+  }
+
 
   //nhap nhan vien thong qua file
   public void addByFile(String filePath) {
@@ -479,7 +555,7 @@ public class DSNhanVien implements iDanhSach{
           file.write("bb/"+((BoiBan)DSNV[i]).getSoBanPhucVu()+"/");
         }
         if(DSNV[i] instanceof ThuNgan) {
-          file.write("tt/"+((ThuNgan)DSNV[i]).getHoaDon()+"/");
+          file.write("tn/"+((ThuNgan)DSNV[i]).getHoaDon()+"/");
         }
         file.write(DSNV[i].getMaNV()+"/"+DSNV[i].getTen()+"/"+DSNV[i].getLuong()+"/"+DSNV[i].getThuong()+"/"+printFulltime(DSNV[i].getFulltime())+"/"+DSNV[i].getNgayLamViec()+"/"+DSNV[i].getNgayNghi()+"\n");
       }

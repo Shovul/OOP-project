@@ -1,7 +1,0 @@
-db/12/101/Pham Nguyen Thanh Sang/1.0E7/100000.0/ft/36/0
-bb/2/202/Nguyen Huu Dang Khoi/6000000.0/20000.0/ft/0/0
-bb/0/103/Huynh Le Huy Hien/5000000.0/10000.0/pt/30/2
-bb/12/103/Bladudu/1.0E8/30000.0/pt/12/1
-bb/0/105/a/1000.0/0.0/ft/0/0
-db/100/50011/among us/1.0E10/1000.0/pt/200/0
-db/0/1/a/20.0/1.0/pt/1/1
