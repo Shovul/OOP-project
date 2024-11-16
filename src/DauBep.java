@@ -56,6 +56,14 @@ public class DauBep extends NhanVien implements iCook{
     nuoc.dungNguyenLieu(kho);
     soLuongMonNau++;
   }
+  public void nauMon(DoAn thucan, KhoNguyenLieu kho, int n) {
+    thucan.dungNguyenLieu(kho);
+    soLuongMonNau += n;
+  }
+  public void nauMon(Nuoc nuoc, KhoNguyenLieu kho, int n) {
+    nuoc.dungNguyenLieu(kho);
+    soLuongMonNau += n;
+  }
   // public void nauMon(DSMon ds, KhoNguyenLieu kho) {
   //   for(int i=0; i<ds.getLength(); i++) {
   //     nauMon(ds.getDanhSachMon()[i], kho);

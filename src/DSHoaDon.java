@@ -90,6 +90,13 @@ public class DSHoaDon implements iDanhSach {
         }
     }
 
+    public double tinhTong() {
+        double sum = 0;
+        for(int i=0; i<length; i++) {
+            sum += dshd[i].getTongTien();
+        }
+        return sum;
+    }
 //nhap hoa don thong qua file
     public void addByFile(String fileName){
         try {

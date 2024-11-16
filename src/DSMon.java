@@ -293,6 +293,13 @@ public class DSMon implements iDanhSach {
   }
 
   //in danh sach
+  public void xuatNgan() {
+    for(int i=0; i<length; i++) {
+      System.out.println("====================");
+      System.out.print(danhSachMon[i].getTenThucAn() + "\t\tGia: ");
+      System.out.println(danhSachMon[i].getGiaThucAn());
+    }
+  }
   public void xuat() {
     for(int i=0; i<length; i++) {
       System.out.println("====================");
