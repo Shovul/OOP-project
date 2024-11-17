@@ -31,15 +31,15 @@ public class Nuoc extends Mon{
   public void nhap() {
     super.nhap();
     Scanner scanner = new Scanner(System.in);
-    System.out.print("Nhap size cua nuoc: ");
+    System.out.print("Nhập size của nước: ");
     size = scanner.next().charAt(0);
     loaiNuoc.nhap();
   }
   public void xuat() {
     super.xuat();
-    System.out.println("Loai: " + loaiNuoc.ten);
-    System.out.println("Dung tich: " + loaiNuoc.soLuong + "ml");
-    System.out.println("Kich co: " + size);
+    System.out.println("Loại: " + loaiNuoc.ten);
+    System.out.println("Dung tích: " + loaiNuoc.soLuong + "ml");
+    System.out.println("Kích cỡ: " + size);
   }
 
   public void dungNguyenLieu(KhoNguyenLieu kho) {

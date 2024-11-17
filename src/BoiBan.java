@@ -27,12 +27,12 @@ public class BoiBan extends NhanVien {
   public void nhap() {
     super.nhap();
     Scanner scanner = new Scanner(System.in);
-    System.out.print("Nhap so khach da phuc vu: ");
+    System.out.print("Nhập số bàn đã phục vụ: ");
     soBanPhucVu = scanner.nextInt();
   }
   public void xuat() {
     super.xuat();
-    System.out.println("- So ban phuc vu: " + soBanPhucVu);
+    System.out.println("- Số bàn phục vụ: " + soBanPhucVu);
   }
   @Override
   public int checkNgayNghi() {

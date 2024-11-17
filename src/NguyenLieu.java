@@ -41,13 +41,13 @@ public class NguyenLieu {
   }
 
   public void xuat() {
-    System.out.println("So luong " + ten + ": " + soLuong);
+    System.out.println("Số lượng" + ten + ": " + soLuong);
   }
   public void nhap() {
     Scanner scanner = new Scanner(System.in);
-    System.out.print("Nhap ten nguyen lieu: ");
+    System.out.print("Nhập tên nguyên liệu: ");
     ten = scanner.nextLine();
-    System.out.print("Nhap so luong nguyen lieu: ");
+    System.out.print("Nhập số lượng nguyên liệu: ");
     soLuong = scanner.nextInt();
   }
 }

@@ -1,17 +1,17 @@
-coca cola/200000
-soda/200000
-cafe/300000
-tra/300000
+coca cola/198650
+soda/199000
+cafe/298800
+tra/297600
 sua/120000
 nuoc/100000
-banh mi/500
-trung/700
-phomai/200
-khoai tay/100
-thit ga/170
+banh mi/494
+trung/699
+phomai/196
+khoai tay/98
+thit ga/165
 thit heo/100
-thit bo/150
-dua leo/200
-ca chua/200
-salad/200
-com/100
+thit bo/148
+dua leo/197
+ca chua/191
+salad/194
+com/99
