@@ -1,11 +1,14 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.Scanner; 
 
 public class DSBAN implements iDanhSach
-
 {
     BAN[] dsban;
     int n;
+
     public DSBAN()
     {
         dsban= new BAN[0];
@@ -19,30 +22,29 @@ public class DSBAN implements iDanhSach
     public void nhap()
     {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Hay nhap so luong ban");
+        System.out.println("Hãy nhập số lượng bàn");
         n=sc.nextInt();
         sc.nextLine();
         dsban = new BAN[n];
         for(int i=0; i<n ; i++)
         {
             dsban[i]=new BAN();
-            System.out.println("Nhap thong tin ban thu " + (i+1) +" : ");
+            System.out.println("Nhập thông tin bàn thứ " + (i+1) +" : ");
             dsban[i].nhap();
         }
     }
     public void xuat()
     {   
-        for(int i=0;i<n ; i++)
+        for(int i=0; i<n ; i++)
         {
-        System.out.println("Vay thong tin dat ban la:" );
-        dsban[i].xuat();
+            dsban[i].xuat();
         }
     }
     @Override public void them()
     {
         dsban = Arrays.copyOf(dsban, n+1);
         dsban[n] = new BAN();
-        System.out.println("Hay nhap thong tin ban mà ban muon them:");
+        System.out.println("Hãy nhập thông tin bàn bạn muốn thêm:");
         dsban[n].nhap();
         n++;
     }
@@ -288,6 +290,73 @@ public class DSBAN implements iDanhSach
             System.out.println("Không tim thay ban");
         }
     }
+
+    public void setBanTrong(int ma) {
+        for(int i=0; i<n; i++) {
+            if(dsban[i].getMaBan() == ma) {
+                dsban[i].settrong();
+            }
+        }
+    }
     
+  public void addByFile(String filePath) {
+    try {
+      BufferedReader file = new BufferedReader(new FileReader(filePath));
+      String line = file.readLine();
+      while(line != null) {
+        String[] arrayLine = line.split("/");
+        dsban = Arrays.copyOf(dsban, n+1);
+
+        dsban[n] = new BAN();
+        dsban[n].setMaBan(Integer.parseInt(arrayLine[0]));
+        if(arrayLine[1].equalsIgnoreCase("empty")) {
+          dsban[n].settrong();
+        }
+        else if(arrayLine[1].equalsIgnoreCase("full")){
+          dsban[n].setday();
+        }
+        dsban[n].setloai(Integer.parseInt(arrayLine[2]));
+        line = file.readLine();
+        n++;
+      }
+      file.close();
+    }
+    catch(Exception ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  private String printVacant(boolean trongCho) {
+    if(trongCho) {
+      return "empty";
+    }
+    else {
+      return "full";
+    }
+  }
+
+  public BAN orderBan(int loai) {
+    for(int i=0; i<n; i++) {
+        if((dsban[i].getloai() == 1 && dsban[i].gettrong()) || (dsban[i].getloai() == 2 && dsban[i].gettrong()) || (dsban[i].getloai() == 3 && dsban[i].gettrong())) {
+            dsban[i].setday();
+            return dsban[i];
+        }
+    }
+    return null;
+  }
+
+  //in danh sach nhan vien ra file, dung de update danh sach sau khi thay doi
+  public void printListInFile(String filePath) {
+        try{
+            FileWriter file = new FileWriter(filePath);
+            for(int i = 0;i<n; i++) {
+                file.write(dsban[i].getMaBan()+"/"+printVacant(dsban[i].gettrong())+"/"+dsban[i].getloai()+"\n");
+            }
+            file.close();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+    }
 }
 

@@ -35,7 +35,7 @@ public class DSHoaDon implements iDanhSach {
 
     //xoa hoa don theoo ma hoa don
     public void xoa() {
-        System.out.print("Nhap ma hoa don: ");
+        System.out.print("Nhập mã hóa đơn: ");
         Scanner sc = new Scanner(System.in);
         xoa(sc.nextInt());
     }
@@ -46,29 +46,67 @@ public class DSHoaDon implements iDanhSach {
                     dshd[j] = dshd[j + 1];
                 }
                 dshd = Arrays.copyOf(dshd, length--);
-                break;
+                return;
             }
         }
+        System.out.println("Không tìm thấy hóa đơn #" + MaHD);
     }
 
     //sua thong tin hoa  don
     public void sua() {
-        System.out.print("Nhap ma hoa don: ");
+        System.out.print("Nhập mã hóa đơn: ");
         Scanner sc = new Scanner(System.in);
         sua(sc.nextInt());
     }
     public void sua(int MaHD){
+        boolean flag = true;
         for(int i = 0; i < length; i++){
             if(dshd[i].getMaHD() == MaHD){
-                dshd[i].Nhap();
-                break;
+                quanlySua(i);
+                return;
             }
         }
+        System.out.println("Không tìm thấy hóa đơn #" + MaHD);
     } 
+    private void quanlySua(int i) {
+        System.out.println("1. Sửa mã hóa đơn");
+        System.out.println("2. Sửa ngày in hóa đơn");
+        System.out.println("3. Sửa tên thu ngân");
+        System.out.println("4. Sửa tên khách hàng");
+        System.out.println("5. Sửa danh sách món gọi");
+        System.out.println("6. Sửa toàn bộ");
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        switch (n) {
+            case 1:
+                dshd[i].setMaHD(sc.nextInt());
+                break;
+            case 2:
+                dshd[i].setNgayInDon(sc.nextLine());
+                break;
+            case 3:
+                dshd[i].setThuNgan(sc.nextLine());
+                break;
+            case 4:
+                dshd[i].setKhach(sc.nextLine());
+                break;
+            case 5:
+                dshd[i].nhapMon();
+                break;
+            case 6:
+                dshd[i].Nhap();
+                break;
+        
+            default:
+                break;
+        }
+    }
 
     //tim kiem va tra ve hoa don
     public void timkiem() {
-        System.out.print("Nhap ma hoa don: ");
+        System.out.print("Nhập mã hóa đơn: ");
         Scanner sc = new Scanner(System.in);
         timkiem(sc.nextInt());
     }
@@ -79,7 +117,7 @@ public class DSHoaDon implements iDanhSach {
                 return;
             }
         }
-        System.out.println("khong tim thay hoa don voi ma " + MaHD);
+        System.out.println("Không tìm thấy hóa đơn #" + MaHD);
     }
 
     //in danh sach
@@ -110,19 +148,25 @@ public class DSHoaDon implements iDanhSach {
                 dshd[length] = new HoaDon();
                 dshd[length].setMaHD(Integer.parseInt(arrayLine[0]));
                 dshd[length].setNgayInDon(arrayLine[1]);
-                dshd[length].setTenKhach(arrayLine[2]);
+                dshd[length].setKhach(arrayLine[2]);
+                dshd[length].setThuNgan(arrayLine[3]);
+                dshd[length].setBan(Integer.parseInt(arrayLine[4]));
 
                 DSMon menu = new DSMon();
                 menu.addByFile("menu.txt");
-                for(int i = 3; i < arrayLine.length; i++){
+                for(int i = 5; i < arrayLine.length; i++){
                     Mon mon = menu.getMon(arrayLine[i++]);
                     
                     int soLuong = Integer.parseInt(arrayLine[i]);
 
                     if(mon instanceof Nuoc && (arrayLine[i+1].charAt(0) == 's' || arrayLine[i+1].charAt(0) == 'm' || arrayLine[i+1].charAt(0) == 'l')) {
                         ((Nuoc)mon).setSize(arrayLine[++i].charAt(0));
+                        dshd[length].setMon(((Nuoc)mon), soLuong);
                     }
-                    dshd[length].setMon(mon, soLuong);
+                    else {
+                        
+                        dshd[length].setMon(((DoAn)mon), soLuong);
+                    }
                 }
 
                 //tinh tong tien
@@ -141,7 +185,7 @@ public class DSHoaDon implements iDanhSach {
         try {
             FileWriter file = new FileWriter(fileName);
             for(int i = 0; i < length; i++){
-                file.write(dshd[i].getMaHD() + "/" + dshd[i].getNgayInDon() + "/" + dshd[i].getKhach().getTenKH());
+                file.write(dshd[i].getMaHD() + "/" + dshd[i].getNgayInDon() + "/" + dshd[i].getKhach().getTenKH() + "/" + dshd[i].getThuNgan().getTen() + "/" + dshd[i].getBan().getMaBan());
 
                 //ghi tung mon trong DSmon
                 dshd[i].getDSmon().forEach((mon, soLuong) -> {
@@ -160,7 +204,7 @@ public class DSHoaDon implements iDanhSach {
             file.close();
         } 
         catch (Exception e) {
-            System.out.println("Loi khi ghi file: " +e.getMessage());
+            System.out.println("Lỗi khi ghi file: " +e.getMessage());
         }
     }
 

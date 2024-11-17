@@ -52,7 +52,7 @@ public class DoAn extends Mon {
   public void nhap() {
     super.nhap();
     Scanner scanner = new Scanner(System.in);
-    System.out.print("Nhap so thanh phan cua " + tenThucAn + ": ");
+    System.out.print("Nhập số thành phần của món " + tenThucAn + ": ");
     soNguyenLieu = scanner.nextInt();
     nguyenlieuLam = new NguyenLieu[soNguyenLieu];
     for(int i=0; i<soNguyenLieu; i++) {

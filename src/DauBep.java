@@ -27,12 +27,12 @@ public class DauBep extends NhanVien implements iCook{
   public void nhap() {
     super.nhap();
     Scanner scanner = new Scanner(System.in);
-    System.out.print("Nhap so luong mon da nau: ");
+    System.out.print("Nhập số món đã nấu: ");
     soLuongMonNau = scanner.nextInt();
   }
   public void xuat() {
     super.xuat();
-    System.out.println("- So mon nau: " + soLuongMonNau);
+    System.out.println("- Số món đã nấu: " + soLuongMonNau);
   }
   
   @Override

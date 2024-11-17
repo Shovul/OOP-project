@@ -30,20 +30,20 @@ public class DSMon implements iDanhSach {
   public void them() {
     danhSachMon = Arrays.copyOf(danhSachMon, length+1);
     
-    System.out.println("1. Them do an");
-    System.out.println("2. Them nuoc");
-    System.out.println("Nhap 1 hoac 2: ");
+    System.out.println("1. Thêm đồ ăn");
+    System.out.println("2. Thêm nước");
+    System.out.println("Nhập 1 hoặc 2: ");
     Scanner scanner = new Scanner(System.in);
     int choose = scanner.nextInt();
     switch (choose) {
       case 1:
         danhSachMon[length] = new DoAn();
-        danhSachMon[length].nhap();
+        ((DoAn)danhSachMon[length]).nhap();
         length++;
         break;
       case 2:
         danhSachMon[length] = new Nuoc();
-        danhSachMon[length].nhap();
+        ((Nuoc)danhSachMon[length]).nhap();
         length++;
         break;
 
@@ -54,53 +54,44 @@ public class DSMon implements iDanhSach {
   }
   //xoa mon an theo ma mon an
   public void xoa(int maThucAn) {
-    boolean flag = false;
-
     for(int i=0; i<length; i++) {
       if(danhSachMon[i].maThucAn == maThucAn) {
         for(int j=i; j<length-1; j++) {
           danhSachMon[j] = danhSachMon[j+1];
         }
         danhSachMon = Arrays.copyOf(danhSachMon, length--);
-        flag = true;
-        break;
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong the tim mon an");
-    }
+    System.out.println("Không thể tìm thấy món ăn");
   }
   public void xoa(String tenThucAn) {
-    boolean flag = false;
     for(int i=0; i<length; i++) {
       if(danhSachMon[i].tenThucAn.equals(tenThucAn)) {
         for(int j=i; j<length-1; j++) {
           danhSachMon[j] = danhSachMon[j+1];
         }
         danhSachMon = Arrays.copyOf(danhSachMon, length--);
-        flag = true;
-        break;
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong the tim mon an");
-    }
+    System.out.println("Không thể tìm thấy món ăn");
   }
   public void xoa() {
-    System.out.println("1. Xoa theo ma");
-    System.out.println("2. Xoa theo ten");
+    System.out.println("1. Xóa theo mã");
+    System.out.println("2. Xóa theo tên");
     Scanner sc = new Scanner(System.in);
     
     int n = sc.nextInt();
     String ten;
     switch (n) {
       case 1:
-        System.out.print("Nhap ma do an muon xoa: ");
+        System.out.print("Nhập mã đồ ăn muốn xóa: ");
         n = sc.nextInt();
         xoa(n);
         break;
       case 2:
-        System.out.print("Nhap ten do an muon xoa: ");
+        System.out.print("Nhập tên đồ ăn muốn xóa: ");
         ten = sc.nextLine();
         ten = sc.nextLine();
         xoa(ten);
@@ -113,20 +104,20 @@ public class DSMon implements iDanhSach {
 
   //sua thong tin mon an
   public void sua() {
-    System.out.println("1. Sua theo ma");
-    System.out.println("2. Sua theo ten");
+    System.out.println("1. Sửa theo mã");
+    System.out.println("2. Sửa theo tên");
     Scanner sc = new Scanner(System.in);
     
     int n = sc.nextInt();
     String ten;
     switch (n) {
       case 1:
-        System.out.print("Nhap ma mon muon sua: ");
+        System.out.print("Nhập mã món muốn sửa: ");
         n = sc.nextInt();
         sua(n);
         break;
       case 2:
-        System.out.print("Nhap ten mon muon sua: ");
+        System.out.print("Nhập tên món muốn sửa: ");
         ten = sc.nextLine();
         ten = sc.nextLine();
         sua(ten);
@@ -137,49 +128,39 @@ public class DSMon implements iDanhSach {
     }
   }
   public void sua(int maThucAn) {
-    int i;
-    boolean flag = false;
-    for(i=0; i<length; i++) {
+    for(int i=0; i<length; i++) {
       if(danhSachMon[i].maThucAn == maThucAn) {
         if(danhSachMon[i] instanceof DoAn)
           quanLySuaDoAn(i);
         else 
           quanLySuaNuoc(i);
-        flag = true;
-        break;
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong the tim mon an");
-    }
+    System.out.println("Không thể tìm thấy món ăn");
   }
   public void sua(String tenThucAn) {
-    int i;
-    boolean flag = false;
-    for(i=0; i<length; i++) {
+    for(int i=0; i<length; i++) {
       if(danhSachMon[i].tenThucAn.equals(tenThucAn)) {
         if(danhSachMon[i] instanceof DoAn)
           quanLySuaDoAn(i);
         else 
           quanLySuaNuoc(i);
-        flag = true;
-        break;
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong the tim mon an");
-    }
+    System.out.println("Không thể tìm thấy món ăn");
   }
   private void quanLySuaDoAn(int i) {
     Scanner sc = new Scanner(System.in);
     int n;
     
     System.out.println(danhSachMon[i].tenThucAn);
-    System.out.println("1. Sua ma");
-    System.out.println("2. Sua ten");
-    System.out.println("3. Sua gia");
-    System.out.println("4. Sua nguyen lieu");
-    System.out.println("5. Sua tat ca thong tin");
+    System.out.println("1. Sửa mã");
+    System.out.println("2. Sửa tên");
+    System.out.println("3. Sửa giá");
+    System.out.println("4. Sửa nguyên liệu");
+    System.out.println("5. Sửa tất cả thông tin");
     n = sc.nextInt();
     switch (n) {
       case 1:
@@ -193,7 +174,7 @@ public class DSMon implements iDanhSach {
         danhSachMon[i].setGiaThucAn(sc.nextDouble());
         break;
       case 4:
-        System.out.print("Nhap so luong nguyen lieu: ");
+        System.out.print("Nhập số lượng nguyên liệu: ");
         ((DoAn)danhSachMon[i]).setSoNguyenLieu(sc.nextInt());
         break;
       case 5:
@@ -210,11 +191,11 @@ public class DSMon implements iDanhSach {
     int n;
     
     System.out.println(danhSachMon[i].tenThucAn);
-    System.out.println("1. Sua ma");
-    System.out.println("2. Sua ten");
-    System.out.println("3. Sua gia");
-    System.out.println("4. Sua size");
-    System.out.println("5. Sua tat ca thong tin");
+    System.out.println("1. Sửa mã");
+    System.out.println("2. Sửa tên");
+    System.out.println("3. Sửa giá");
+    System.out.println("4. Sửa size");
+    System.out.println("5. Sửa tất cả thông tin");
     n = sc.nextInt();
     switch (n) {
       case 1:
@@ -242,20 +223,20 @@ public class DSMon implements iDanhSach {
 
   //tim kiem mon an
   public void timkiem() {
-    System.out.println("1. Tim kiem theo ma");
-    System.out.println("2. Tim kiem theo ten");
+    System.out.println("1. Tìm kiếm theo mã");
+    System.out.println("2. Tìm kiếm theo tên");
     Scanner sc = new Scanner(System.in);
     
     int n = sc.nextInt();
     String ten;
     switch (n) {
       case 1:
-        System.out.print("Nhap ma mon an muon tim kiem: ");
+        System.out.print("Nhập mã món ăn muốn tìm kiếm: ");
         n = sc.nextInt();
         timkiem(n);
         break;
       case 2:
-        System.out.print("Nhap ten mon an muon tim kiem: ");
+        System.out.print("Nhập tên món ăn muốn tìm kiếm: ");
         ten = sc.nextLine();
         ten = sc.nextLine();
         timkiem(ten);
@@ -266,37 +247,30 @@ public class DSMon implements iDanhSach {
     }
   }
   public void timkiem(int maThucAn) {
-    boolean flag = false;
     for(int i=0; i<length; i++) {
       if(danhSachMon[i].maThucAn == maThucAn) {
         danhSachMon[i].xuat();
-        flag = true;
-        break;
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong the tim mon an");
-    }
+    System.out.println("Không thể tìm thấy món ăn");
   }
   public void timkiem(String tenThucAn) {
-    boolean flag = false;
     for(int i=0; i<length; i++) {
       if(danhSachMon[i].tenThucAn.equals(tenThucAn)) {
         danhSachMon[i].xuat();
-        flag = true;
-        break;
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong the tim mon an");
-    }
+    
+    System.out.println("Không thể tìm thấy món ăn");
   }
 
   //in danh sach
   public void xuatNgan() {
     for(int i=0; i<length; i++) {
       System.out.println("====================");
-      System.out.print(danhSachMon[i].getTenThucAn() + "\t\tGia: ");
+      System.out.print(danhSachMon[i].getTenThucAn() + "\t\tGiá: ");
       System.out.println(danhSachMon[i].getGiaThucAn());
     }
   }
@@ -309,12 +283,12 @@ public class DSMon implements iDanhSach {
 
   public Mon getMon(String tenMon) {
     for(int i=0; i<length; i++) {
-      if(danhSachMon[i].tenThucAn.equals(tenMon)) {
+      if(danhSachMon[i].tenThucAn.equalsIgnoreCase(tenMon)) {
         return danhSachMon[i];
       }
     }
     Scanner sc = new Scanner(System.in);
-    System.out.print("Nhap lai ten mon: ");
+    System.out.print("Nhập lại tên món: ");
     return getMon(sc.nextLine());
   }
   

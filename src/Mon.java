@@ -41,16 +41,16 @@ public abstract class Mon {
   public void nhap() {
     Scanner scanner = new Scanner(System.in);
     
-    System.out.print("Nhap ten mon: ");
+    System.out.print("Nhập tên món: ");
     tenThucAn =  scanner.nextLine();
-    System.out.print("Nhap ma mon: ");
+    System.out.print("Nhập mã món: ");
     maThucAn = scanner.nextInt();
-    System.out.print("Nhap gia mon: ");
+    System.out.print("Nhập giá món: ");
     giaThucAn = scanner.nextDouble();
   }
   public void xuat() {
-    System.out.println("Mon " + tenThucAn + ", ma thuc an: " + maThucAn);
-    System.out.println("- Gia 1 mon: " + giaThucAn + "vnd");
+    System.out.println("Món " + tenThucAn + ", mã thức ăn: " + maThucAn);
+    System.out.println("- Giá 1 món: " + giaThucAn + "vnd");
   }
 
   abstract void dungNguyenLieu(KhoNguyenLieu n);

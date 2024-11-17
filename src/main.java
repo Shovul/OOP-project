@@ -15,27 +15,29 @@ public class main {
   static KhoNguyenLieu khoNguyenLieu = new KhoNguyenLieu();
   static DSHoaDon danhsachHoaDon = new DSHoaDon();
   static DSKH danhsachKhachHang = new DSKH();
+  static DSBAN danhsachBan = new DSBAN();
   static BufferedReader input;
   static int ngay;
   static HashMap<Integer, Double> doanhThu = new HashMap<>();
   static double sumOfTheMonth = 0;
+  static String hoadonHomNay;
 
   
-  public static void quanLyNhanVien() {
+  public static void quanlyNhanVien() {
     String infile = "dsnv.txt";
     String outfile = "";
     do {
-      System.out.println("-- Quan ly nhan vien --");
-      System.out.println("1. Xuat danh sach nhan vien ra man hinh");
-      System.out.println("2. Tim kiem nhan vien");
-      System.out.println("3. Them nhan vien");
-      System.out.println("4. Xoa nhan vien");
-      System.out.println("5. Sua nhan vien");
+      System.out.println("-- Quản lý nhân viên --");
+      System.out.println("1. Xuất danh sách nhân viên ra màn hình");
+      System.out.println("2. Tìm kiếm nhân viên");
+      System.out.println("3. Thêm nhân viên");
+      System.out.println("4. Xóa nhân viên");
+      System.out.println("5. Sửa nhân viên");
       System.out.println("6. Tìm nhân viên nghỉ >= ");
-      System.out.println("7. Nhap danh sach nhan vien tu file");
-      System.out.println("8. Xuat danh sach nhan vien ra file");
-      System.out.println("9. Cap nhat danh sach nhan vien");
-      System.out.println("10. Thoat quan ly nhan vien");
+      System.out.println("7. Nhập danh sách nhân viên từ file");
+      System.out.println("8. Xuất danh sách nhân viên ra file");
+      System.out.println("9. Cập nhật danh sách nhân viên");
+      System.out.println("10. Thoát quản lý nhân viên");
       n = sc.nextInt();
       switch (n) {
         case 1:
@@ -58,14 +60,14 @@ public class main {
           danhsachNhanVien.xemNhanVienNghiHon(sc.nextInt());
           break;
         case 7: {
-          System.out.println("Nhap file chua thong tin nhan vien");
+          System.out.println("Nhập file chứa thông tin nhân viên");
           infile = sc.nextLine();
           infile = sc.nextLine();
           danhsachNhanVien.addByFile(infile);
           break;
         }
         case 8: {
-          System.out.println("Nhap file de in cac thong tin nhan vien");
+          System.out.println("Nhập file để in các thông tin nhân viên");
           outfile = sc.nextLine();
           outfile = sc.nextLine();
           danhsachNhanVien.printListInFile(outfile);
@@ -73,10 +75,10 @@ public class main {
         }
         case 9: {
           if(infile.equals("")) {
-            System.out.println("!Chua nhap file input!");
+            System.out.println("!Chưa nhập file input!");
             break;
           }
-          System.out.println("Da cap nhap file thong tin nhan vien");
+          System.out.println("Đã cập nhật file thông tin nhân viên");
           danhsachNhanVien.printListInFile(infile);
           break;
         }
@@ -89,21 +91,21 @@ public class main {
     
     flag = true;
   }
-  public static void quanLyMonAn() {
+  public static void quanlyMonAn() {
     String infile = "menu.txt";
     String outfile = "";
     do {
-      System.out.println("-- Quan ly menu quan --");
-      System.out.println("1. Xuat thong tin mon ra man hinh");
-      System.out.println("2. Xuat menu ra man hinh");
-      System.out.println("3. Tim kiem mon");
-      System.out.println("4. Them mon");
-      System.out.println("5. Xoa mon");
-      System.out.println("6. Sua mon");
-      System.out.println("7. Nhap danh sach menu tu file");
-      System.out.println("8. Xuat danh sach menu ra file");
-      System.out.println("9. Cap nhat danh sach menu");
-      System.out.println("10. Thoat quan ly menu");
+      System.out.println("-- Quản lý menu quán --");
+      System.out.println("1. Xuất thông tin món ra màn hình");
+      System.out.println("2. Xuất menu ra màn hình");
+      System.out.println("3. Tìm kiếm món");
+      System.out.println("4. Thêm món");
+      System.out.println("5. Xóa món");
+      System.out.println("6. Sửa món");
+      System.out.println("7. Nhập danh sách menu từ file");
+      System.out.println("8. Xuất danh sách menu ra file");
+      System.out.println("9. Cập nhật danh sách menu");
+      System.out.println("10. Thoát quản lý menu");
       n = sc.nextInt();
       switch (n) {
         case 1:
@@ -125,14 +127,14 @@ public class main {
           danhsachMon.sua();
           break;
         case 7: {
-          System.out.println("Nhap file chua thong tin mon");
+          System.out.println("Nhập file chưa thông tin món");
           infile = sc.nextLine();
           infile = sc.nextLine();
           danhsachMon.addByFile(infile);
           break;
         }
         case 8: {
-          System.out.println("Nhap file de in cac thong tin mon");
+          System.out.println("Nhập file để in các thông tin món");
           outfile = sc.nextLine();
           outfile = sc.nextLine();
           danhsachMon.printListInFile(outfile);
@@ -140,10 +142,10 @@ public class main {
         }
         case 9: {
           if(infile.equals("")) {
-            System.out.println("!Chua nhap file input!");
+            System.out.println("!Chưa nhập file input!");
             break;
           }
-          System.out.println("Da cap nhap file thong tin mon");
+          System.out.println("Đã cập nhật file thông tin món");
           danhsachMon.printListInFile(infile);
           break;
         }
@@ -156,20 +158,20 @@ public class main {
     
     flag = true;
   }
-  public static void quanLyKhachHang() {
+  public static void quanlyKhachHang() {
     String infile = "dskh.txt";
     String outfile = "";
     do {
-      System.out.println("-- Quan ly Khach hang --");
-      System.out.println("1. Xuat danh sach khach hang ra man hinh");
-      System.out.println("2. Tim kiem khach hang");
-      System.out.println("3. Them khach hang");
-      System.out.println("4. Xoa khach hang");
-      System.out.println("5. Sua thong tin khach hang");
-      System.out.println("6. Nhap danh sach Khach hang tu file");
-      System.out.println("7. Xuat danh sach Khach hang ra file");
-      System.out.println("8. Cap nhat danh sach Khach hang");
-      System.out.println("9. Thoat quan ly khach hang");
+      System.out.println("-- Quản lý khách hàng --");
+      System.out.println("1. Xuất danh sách khách hàng ra màn hình");
+      System.out.println("2. Tìm kiếm khách hàng");
+      System.out.println("3. Thêm khách hàng");
+      System.out.println("4. Xóa khách hàng");
+      System.out.println("5. Sửa thông tin khách hàng");
+      System.out.println("6. Nhập danh sách khách hàng từ file");
+      System.out.println("7. Xuất danh sách khách hàng ra file");
+      System.out.println("8. Cập nhật danh sách khách hàng");
+      System.out.println("9. Thoát quản lý khách hàng");
       n = sc.nextInt();
       switch (n) {
         case 1:
@@ -182,13 +184,13 @@ public class main {
           danhsachKhachHang.them();
           break;
         case 4:
-          danhsachKhachHang.xoa();
+          danhsachKhachHang.xuat();
           break;
         case 5:
           danhsachKhachHang.sua();
           break;
         case 6: {
-          System.out.println("Nhap ten file chua thong tin khach hang ");
+          System.out.println("Nhập tên file chưa thông tin khách hàng ");
           System.out.println("Vi du: dskh.txt ");
           infile = sc.nextLine();
           infile = sc.nextLine();
@@ -196,7 +198,7 @@ public class main {
           break;
         }
         case 7: {
-          System.out.println("Nhap ten file se in cac thong tin khach hang");
+          System.out.println("Nhập tên file sẽ in các thông tin khách hàng");
           System.out.println("Vi du: danhsachkhachhang.txt ");
           outfile = sc.nextLine();
           outfile = sc.nextLine();
@@ -205,10 +207,10 @@ public class main {
         }
         case 8: {
           if(infile.equals("")) {
-            System.out.println("!Chua nhap file input!");
+            System.out.println("!Chưa nhập file input!");
             break;
           }
-          System.out.println("Da cap nhap file thong tin khach hang");
+          System.out.println("Đã cập nhật file thông tin khách hàng");
           danhsachKhachHang.Writefile(infile);
           break;
         }
@@ -221,21 +223,21 @@ public class main {
     
     flag = true;
   }
-  public static void quanLyNguyenLieu() {
+  public static void quanlyNguyenLieu() {
     String infile = "kho.txt";
     String outfile = "";
     do {
-      System.out.println("-- Quan ly kho nguyen lieu --");
-      System.out.println("1. Xuat kho nguyen lieu ra man hinh");
-      System.out.println("2. Tim kiem nguyen lieu");
-      System.out.println("3. Them nguyen lieu");
-      System.out.println("4. Xoa nguyen lieu");
-      System.out.println("5. Sua nguyen lieu");
-      System.out.println("6. Nhap danh sach kho nguyen lieu tu file");
-      System.out.println("7. Xuat danh sach kho nguyen lieu ra file");
-      System.out.println("8. Cap nhat danh sach kho nguyen lieu");
-      System.out.println("9. Kiem tra so luong nguyen lieu");
-      System.out.println("10. Thoat quan ly kho nguyen lieu");
+      System.out.println("-- Quản lý kho nguyên liệu --");
+      System.out.println("1. Xuất kho nguyên liệu ra màn hình");
+      System.out.println("2. Tìm kiếm nguyên liệu");
+      System.out.println("3. Thêm nguyên liệu");
+      System.out.println("4. Xóa nguyên liệu");
+      System.out.println("5. Sửa nguyên liệu");
+      System.out.println("6. Nhập danh sách kho nguyên liệu từ file");
+      System.out.println("7. Xuất danh sách kho nguyên liệu ra file");
+      System.out.println("8. Cập nhật danh sách kho nguyên liệu");
+      System.out.println("9. Kiểm tra số lượng nguyên liệu");
+      System.out.println("10. Thoát quản lý kho nguyên liệu");
       n = sc.nextInt();
       switch (n) {
         case 1:
@@ -254,14 +256,14 @@ public class main {
           khoNguyenLieu.sua();
           break;
         case 6: {
-          System.out.println("Nhap file chua thong tin mon");
+          System.out.println("Nhập file chưa thông tin món");
           infile = sc.nextLine();
           infile = sc.nextLine();
           khoNguyenLieu.addByFile(infile);
           break;
         }
         case 7: {
-          System.out.println("Nhap file de in cac thong tin mon");
+          System.out.println("Nhập file để in các thông tin món");
           outfile = sc.nextLine();
           outfile = sc.nextLine();
           khoNguyenLieu.printListInFile(outfile);
@@ -269,15 +271,15 @@ public class main {
         }
         case 8: {
           if(infile.equals("")) {
-            System.out.println("!Chua nhap file input!");
+            System.out.println("!Chưa nhập file input!");
             break;
           }
-          System.out.println("Da cap nhap file thong tin mon");
+          System.out.println("Đã cập nhật file thông tin món");
           khoNguyenLieu.printListInFile(infile);
           break;
         }
         case 9: {
-          System.out.print("Kiem tra so luong nguyen lieu <= ");
+          System.out.print("Kiểm tra số lượng nguyên liệu <= ");
           khoNguyenLieu.kiemTraSoLuongNguyenLieu(sc.nextInt());
           break;
         }
@@ -290,21 +292,21 @@ public class main {
     
     flag = true;
   }
-  public static void quanLyDonHang() {
+  public static void quanlyDonHang() {
     
-    String infile = "donhang.txt";
+    String infile = hoadonHomNay;
     String outfile = "";
     do {
-      System.out.println("-- Quan ly hoa don --");
-      System.out.println("1. Xuat hoa don ra man hinh");
-      System.out.println("2. Tim kiem hoa don");
-      System.out.println("3. Them hoa don");
-      System.out.println("4. Xoa hoa don");
-      System.out.println("5. Sua hoa don");
-      System.out.println("6. Nhap danh sach hoa don tu file");
-      System.out.println("7. Xuat danh sach hoa don ra file");
-      System.out.println("8. Cap nhat danh sach hoa don");
-      System.out.println("9. Thoat quan ly hoa don");
+      System.out.println("-- Quản lý hóa đơn --");
+      System.out.println("1. Xuất hóa đơn ra màn hình");
+      System.out.println("2. Tìm kiếm hóa đơn");
+      System.out.println("3. Thêm hóa đơn");
+      System.out.println("4. Xóa hóa đơn");
+      System.out.println("5. Sửa hóa đơn");
+      System.out.println("6. Nhập danh sách hóa đơn từ file");
+      System.out.println("7. Xuất danh sách hóa đơn ra file");
+      System.out.println("8. Cập nhật danh sách hóa đơn");
+      System.out.println("9. Thoát quản lý hóa đơn");
       n = sc.nextInt();
       switch (n) {
         case 1:
@@ -323,14 +325,14 @@ public class main {
           danhsachHoaDon.sua();
           break;
         case 6: {
-          System.out.println("Nhap file chua thong tin mon");
+          System.out.println("Nhập file chưa thông tin món");
           infile = sc.nextLine();
           infile = sc.nextLine();
           danhsachHoaDon.addByFile(infile);
           break;
         }
         case 7: {
-          System.out.println("Nhap file de in cac thong tin mon");
+          System.out.println("Nhập file để in các thông tin món");
           outfile = sc.nextLine();
           outfile = sc.nextLine();
           danhsachHoaDon.printListInFile(outfile);
@@ -338,11 +340,75 @@ public class main {
         }
         case 8: {
           if(infile.equals("")) {
-            System.out.println("!Chua nhap file input!");
+            System.out.println("!Chưa nhập file input!");
             break;
           }
-          System.out.println("Da cap nhap file thong tin mon");
+          System.out.println("Đã cập nhật file thông tin món");
           danhsachHoaDon.printListInFile(infile);
+          break;
+        }
+        case 9: {
+          flag = false;
+          break;
+        }
+      }
+    }while(flag);
+    
+    flag = true;
+  }
+  public static void quanlyBan() {
+    
+    String infile = "ban.txt";
+    String outfile = "";
+    do {
+      System.out.println("-- Quản lý bàn --");
+      System.out.println("1. Xuất bàn ra màn hình");
+      System.out.println("2. Tìm kiếm bàn");
+      System.out.println("3. Thêm bàn");
+      System.out.println("4. Xóa bàn");
+      System.out.println("5. Sửa bàn");
+      System.out.println("6. Nhập danh sách bàn từ file");
+      System.out.println("7. Xuất danh sách bàn ra file");
+      System.out.println("8. Cập nhật danh sách bàn");
+      System.out.println("9. Thoát quản lý bàn");
+      n = sc.nextInt();
+      switch (n) {
+        case 1:
+          danhsachBan.xuat();
+          break;
+        case 2:
+          danhsachBan.timkiem();
+          break;
+        case 3:
+          danhsachBan.them();
+          break;
+        case 4:
+          danhsachBan.xoa();
+          break;
+        case 5:
+          danhsachBan.sua();
+          break;
+        case 6: {
+          System.out.println("Nhập file chưa thông tin món");
+          infile = sc.nextLine();
+          infile = sc.nextLine();
+          danhsachBan.addByFile(infile);
+          break;
+        }
+        case 7: {
+          System.out.println("Nhập file để in các thông tin món");
+          outfile = sc.nextLine();
+          outfile = sc.nextLine();
+          danhsachBan.printListInFile(outfile);
+          break;
+        }
+        case 8: {
+          if(infile.equals("")) {
+            System.out.println("!Chưa nhập file input!");
+            break;
+          }
+          System.out.println("Đã cập nhật file thông tin món");
+          danhsachBan.printListInFile(infile);
           break;
         }
         case 9: {
@@ -362,7 +428,7 @@ public class main {
       String lines[];
       for(int i=0; i<ngay; i++) {
         doanhThuNgay = input.readLine();
-        lines = doanhThuNgay.split(" ");
+          lines = doanhThuNgay.split("/");
         doanhThu.put(Integer.parseInt(lines[0]), Double.parseDouble(lines[1]));
       }
       input.close();
@@ -370,57 +436,91 @@ public class main {
     catch(Exception ex) {
       ex.printStackTrace();
     }
+    
 
-    danhsachNhanVien.addByFile("dsnv.txt");
-    khoNguyenLieu.addByFile("kho.txt");
-    danhsachMon.addByFile("menu.txt");
-    danhsachHoaDon.addByFile("hoadon.txt");
-    danhsachKhachHang.Readfile("dskh.txt");
+    ngay += 1;
+    hoadonHomNay = "donhang" + Integer.toString(ngay) + ".txt";
+
     do {
-      ngay += 1;
+      DSNhanVien danhsachNhanVien = new DSNhanVien();
+      DSMon danhsachMon = new DSMon();
+      KhoNguyenLieu khoNguyenLieu = new KhoNguyenLieu();
+      DSHoaDon danhsachHoaDon = new DSHoaDon();
+      DSKH danhsachKhachHang = new DSKH();
+      DSBAN danhsachBan = new DSBAN();
+      danhsachNhanVien.addByFile("dsnv.txt");
+      khoNguyenLieu.addByFile("kho.txt");
+      danhsachMon.addByFile("menu.txt");
+      danhsachHoaDon.addByFile(hoadonHomNay);
+      danhsachKhachHang.Readfile("dskh.txt");
+      danhsachBan.addByFile("ban.txt");
       // System.out.print("\033[H\033[2J");  
       System.out.println("Ngay: " + ngay);
-      System.out.println("-- Chon de quan ly --");
-      System.out.println("1. Danh sach nhan vien");
-      System.out.println("2. Danh sach mon an");
-      System.out.println("3. Danh sach khach hang");
-      System.out.println("4. Kho nguyen lieu");
-      System.out.println("5. Danh sach don hang");
-      System.out.println("6. Danh dau nhan vien nghi hom nay");
-      System.out.println("7. In doanh thu ngay hom nay");
-      System.out.println("8. In doanh thu thang nay");
-      System.out.println("9. Ket thuc ngay");
-      System.out.println("10. Thoat chuong trinh");
+      System.out.println("-- Chọn để quản lý --");
+      System.out.println("1. Danh sách nhân viên");
+      System.out.println("2. Danh sách món ăn");
+      System.out.println("3. Danh sách khách hàng");
+      System.out.println("4. Kho nguyên liệu");
+      System.out.println("5. Danh sách đơn hàng");
+      System.out.println("6. Danh sách bàn");
+      System.out.println("7. Đánh dấu nhân viên nghỉ hôm nay");
+      System.out.println("8. Đánh dấu nhân viên làm việc hôm nay");
+      System.out.println("9. Đánh dấu bàn đã được trống");
+      System.out.println("10. In doanh thu ngày hôm nay");
+      System.out.println("11. In doanh thu tháng nay");
+      System.out.println("12. Kết thúc ngày");
+      System.out.println("13. Thoát chương trình");
       n = sc.nextInt();
       switch (n) {
         case 1:
-          quanLyNhanVien();
+          quanlyNhanVien();
           break;
         case 2:
-          quanLyMonAn();
+          quanlyMonAn();
           break;
         case 3:
-          quanLyKhachHang();
+          quanlyKhachHang();
           break;
         case 4:
-          quanLyNguyenLieu();
+          quanlyNguyenLieu();
           break;
         case 5:
-          quanLyDonHang();
+          quanlyDonHang();
           break;
-        case 6: {
-          System.out.print("Nhap ten nhan vien nghi: ");
+        case 6:
+          quanlyBan();
+          break;
+        case 7: {
+          System.out.print("Nhập tên nhân viên nghỉ: ");
           sc.nextLine();
+          danhsachNhanVien.danhDauNghi(sc.nextLine());
+          danhsachNhanVien.printListInFile("dsnv.txt");
           
           break;
         }
-        case 7: {
-          System.out.println("Doanh thu ngay hom nay:  " + danhsachHoaDon.tinhTong());
+        case 8: {
+          System.out.print("Nhập tên nhân viên làm việc: ");
+          sc.nextLine();
+          danhsachNhanVien.danhDauLam(sc.nextLine());
+          danhsachNhanVien.printListInFile("dsnv.txt");
+          
           break;
         }
-        case 8: {
+        case 9: {
+          System.out.print("Nhập mã bàn đã được trống: ");
+          int ban = sc.nextInt();
+          danhsachBan.setBanTrong(ban);
+          danhsachBan.printListInFile("ban.txt");
+          
+          break;
+        }
+        case 10: {
+          System.out.println("Doanh thu ngày hôm nay:  " + danhsachHoaDon.tinhTong());
+          break;
+        }
+        case 11: {
           if(ngay < 30) {
-            System.out.println("Chua du 1 thang de tinh");
+            System.out.println("Chưa đủ 1 tháng để tính doanh thu");
             break;
           }
           doanhThu.forEach((ngay, soLuong) -> {
@@ -431,21 +531,21 @@ public class main {
               e.printStackTrace();
             }
           });
-          System.out.println("Doanh thu thang nay: " + sumOfTheMonth);
+          System.out.println("Doanh thu tháng nay: " + (sumOfTheMonth - danhsachNhanVien.tinhLuongNhanVien()));
         }
-        case 9: {
+        case 12: {
           try {
             FileWriter output = new FileWriter("quanly.txt");
-            output.write(Integer.toString(ngay));
+            output.write(Integer.toString(ngay) + "\n");
             doanhThu.forEach((ngay, soTien) -> {
               try {
-                output.write(Integer.toString(ngay) + "/" + Double.toHexString(soTien));
+                output.write(Integer.toString(ngay) + "/" + Double.toString(soTien) + "\n");
               }
               catch(Exception e) {
                 e.printStackTrace();
               }
             });
-            output.write(Integer.toString(ngay) + "/" + danhsachHoaDon.tinhTong());
+            output.write(Integer.toString(ngay) + "/" + danhsachHoaDon.tinhTong() + "\n");
             flag = false;
             output.close();
             break;
@@ -454,7 +554,7 @@ public class main {
             System.out.println(ex);
           }
         }
-        case 10: {
+        case 13: {
           flag = false;
           break;
         }

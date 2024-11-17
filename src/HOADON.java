@@ -7,6 +7,7 @@ public class HoaDon {
     private String NgayInDon;
     private ThuNgan thuNgan;
     private KHACHHANG Khach;
+    private BAN banDat;
     private HashMap<Mon, Integer> danhsachMon;//hashmap lưu món ăn và số lượng
     private double TongTien = 0; //lưu tổng tiền của hóa đơn
 
@@ -14,16 +15,18 @@ public class HoaDon {
         MaHD = 0;
         NgayInDon = "";
         Khach = new KHACHHANG();
+        banDat = new BAN();
         thuNgan = new ThuNgan();
         TongTien = 0;
         danhsachMon = new HashMap<>();
     }
 
-    public HoaDon(int MaHD, String NgayInDon, KHACHHANG Khach, ThuNgan thuNgan, HashMap<Mon, Integer> danhsachMon, double TongTien){
+    public HoaDon(int MaHD, String NgayInDon, KHACHHANG Khach, BAN banDat, ThuNgan thuNgan, HashMap<Mon, Integer> danhsachMon, double TongTien){
         this.MaHD = MaHD;
         this.NgayInDon = NgayInDon;
         this.TongTien = TongTien;
         this.Khach = Khach;
+        this.banDat = banDat;
         this.thuNgan = thuNgan;
         this.danhsachMon = danhsachMon;
         tinhTongTien();
@@ -44,21 +47,32 @@ public class HoaDon {
         kho.addByFile("kho.txt");
         DSKH danhsachKhachHang = new DSKH();
         danhsachKhachHang.Readfile("dskh.txt");
+        DSBAN danhsachBan = new DSBAN();
+        danhsachBan.addByFile("ban.txt");
 
-        System.out.print("Ten thu ngan tiep khach: ");
-        thuNgan.setTen(hd.nextLine());
-        danhsachNhanVien.tangSoHoaDon(thuNgan.getTen());
-        System.out.print("Ten phuc vu ban: ");
+        System.out.print("Tên thu ngân tiếp khách: ");
+        thuNgan = danhsachNhanVien.tangSoHoaDon(hd.nextLine());
+        System.out.print("Tên phục vụ bàn: ");
         danhsachNhanVien.tangSoBanPhucVu(hd.nextLine());
-        System.out.print("Ten dau bep nau mon: ");
+        System.out.print("Tên đầu bếp nấu: ");
         String daubep = hd.nextLine();
-    
+        System.out.println("1. Bàn 2 chỗ");
+        System.out.println("2. Bàn 4 chỗ");
+        System.out.println("3. Bàn 8 chỗ");
+        System.out.print("Nhập loại bàn muốn đặt: ");
+        banDat = danhsachBan.orderBan(hd.nextInt());
+        if(banDat == null) {
+            System.out.println("Hết bàn loại này!");
+            return;
+        }
 
         System.out.print("Nhập mã hóa đơn: ");
         MaHD = hd.nextInt();
         hd.nextLine();
         System.out.print("Nhập ngày in đơn (DD-MM-YYYY): ");//dd-MM-yy
-        NgayInDon = hd.nextLine();
+        do {
+            NgayInDon = hd.nextLine();
+        }while(NgayInDon.charAt(2) != '-' && NgayInDon.charAt(5) != '-' && NgayInDon.length() != 10);
         Khach = new KHACHHANG();
         System.out.print("Nhập tên khách hàng: ");
         Khach.setTenKH(hd.nextLine());
@@ -74,7 +88,7 @@ public class HoaDon {
                 char size = '@';
                 do {
                     size = hd.next().charAt(0);
-                }while(size != 's' || size != 'm' ||size != 'l');
+                }while(size != 's' && size != 'm' && size != 'l');
                 ((Nuoc)mon).setSize(size);
             }
             System.out.println(mon.getTenThucAn() + " " + mon.getGiaThucAn());
@@ -90,6 +104,7 @@ public class HoaDon {
         danhsachKhachHang.Writefile("dskh.txt");
         danhsachNhanVien.printListInFile("dsnv.txt");
         kho.printListInFile("kho.txt");
+        danhsachBan.printListInFile("ban.txt");
         tinhTongTien();
     }
 
@@ -97,13 +112,15 @@ public class HoaDon {
         System.out.println("Mã hóa đơn: " + MaHD);
         System.out.println("Ngày in đơn: " + NgayInDon);
         System.out.println("Tên khách hàng: " + Khach.getTenKH());
+        System.out.println("Tên thu ngân: " + thuNgan.getTen());
+        System.out.println("Mã bàn: " + banDat.getMaBan() + "Loại: " + banDat.getloai());
         System.out.println("Danh sách món: ");
         danhsachMon.forEach((mon, soLuong) -> {
             System.out.print("Mon " + mon.getTenThucAn() + " ");
             if(mon instanceof Nuoc) {
                 System.out.println(((Nuoc)mon).getSize());
             }
-            System.out.println("Gia: " + mon.getGiaThucAn() + "vnd");
+            System.out.println("Giá: " + mon.getGiaThucAn() + "vnd");
             System.out.println("Số lượng: " +soLuong);
             System.out.println("Thành tiền: " + mon.giaThucAn*soLuong);
         });
@@ -124,14 +141,26 @@ public class HoaDon {
         this.NgayInDon = NgayInDon;
     }
 
+    public void setThuNgan(String ten) {
+        thuNgan.setTen(ten);
+    }
+    public ThuNgan getThuNgan() {
+        return thuNgan;
+    }
     public KHACHHANG getKhach(){
         return Khach;
     }
     public void setkhach(KHACHHANG Khach){
         this.Khach = Khach;
     }
-    public void setTenKhach(String ten) {
+    public void setKhach(String ten) {
         Khach.setTenKH(ten);
+    }
+    public void setBan(int maHD) {
+        banDat.setMaBan(maHD);
+    }
+    public BAN getBan() {
+        return banDat;
     }
 
     public double getTongTien() {
@@ -159,14 +188,32 @@ public class HoaDon {
             danhsachMon.put(mon, soLuong);
         }
     }
-    public void setMon(Mon mon, int soLuong){
-        if(danhsachMon.containsKey(mon))
-        {
-            danhsachMon.merge(mon, soLuong, (soLuongCu, soLuongMoi) -> soLuongCu + soLuongMoi);
-        }
-        else{
+    public void nhapMon() {
+        DSMon menu = new DSMon();
+        menu.addByFile("menu.txt");
+        Scanner sc = new Scanner(System.in);
+        danhsachMon = new HashMap<>();
+        
+        System.out.print("Nhập số lượng món: ");
+        int soLuongMon = sc.nextInt();
+        sc.nextLine();
+        for(int i = 0; i < soLuongMon; i++){
+            System.out.print("Nhập tên món thứ " + (i + 1) + ": ");
+            Mon mon = menu.getMon(sc.nextLine());
+            if(mon instanceof Nuoc) {
+                System.out.print("Nhập size " + mon.tenThucAn + ": ");
+                char size = '@';
+                do {
+                    size = sc.next().charAt(0);
+                }while(size != 's' || size != 'm' ||size != 'l');
+                ((Nuoc)mon).setSize(size);
+            }
+            System.out.println(mon.getTenThucAn() + " " + mon.getGiaThucAn());
+            System.out.print("Nhập số lượng: ");
+            int soLuong = sc.nextInt();
+            sc.nextLine();
+
             danhsachMon.put(mon, soLuong);
         }
     }
-    
 }
