@@ -30,51 +30,50 @@ public class DSNhanVien implements iDanhSach{
   public void them() {
     DSNV = Arrays.copyOf(DSNV, length+1);
     
-    System.out.println("1. Them dau bep");
-    System.out.println("2. Them thu ngan");
-    System.out.println("3. Them boi ban");
-    System.out.println("Nhap 1, 2 hoac 3: ");
+    System.out.println("1. Thêm đầu bếp");
+    System.out.println("2. Thêm thu ngân");
+    System.out.println("3. Thêm bồi bàn");
+    System.out.println("Nhập 1, 2 hoặc 3: ");
     Scanner scanner = new Scanner(System.in);
     int choose = scanner.nextInt();
     switch (choose){
       case 1:
         DSNV[length] = new DauBep();
-        DSNV[length].nhap();
+        ((DauBep)DSNV[length]).nhap();
         length++;
         break;
       case 2:
         DSNV[length] = new ThuNgan();
-        DSNV[length].nhap();
+        ((ThuNgan)DSNV[length]).nhap();
         length++;
         break;
       case 3:
         DSNV[length] = new BoiBan();
-        DSNV[length].nhap();
+        ((BoiBan)DSNV[length]).nhap();
         length++;
         break;
     
       default:
-        them();
         break;
     }
   }
 
-  //xoa nhan vien theo ma nhan vien
+  //xoa nhan vien theo mã nhan vien
   public void xoa() {
-    System.out.println("1. Xoa theo ma");
-    System.out.println("2. Xoa theo ten");
+    System.out.println("1. Xóa theo mã");
+    System.out.println("2. Xóa theo tên");
     Scanner sc = new Scanner(System.in);
     
     int n = sc.nextInt();
     String ten;
     switch (n) {
       case 1:
-        System.out.print("Nhap ma nhan vien muon xoa: ");
+        System.out.print("Nhập mã nhân viên muốn xóa: ");
         n = sc.nextInt();
         xoa(n);
         break;
       case 2:
-        System.out.print("Nhap ten nhan vien muon xoa: ");
+        System.out.print("Nhập tên nhân viên muốn xóa: ");
         ten = sc.nextLine();
         ten = sc.nextLine();
         xoa(ten);
@@ -85,56 +84,48 @@ public class DSNhanVien implements iDanhSach{
     }
   }
   public void xoa(int maNV) {
-    boolean flag = false;
     for(int i=0; i<length; i++) {
       if(DSNV[i].maNV == maNV) {
         for(int j=i; j<length-1; j++) {
           DSNV[j] = DSNV[j+1];
         }
         DSNV = Arrays.copyOf(DSNV, length--);
-        System.out.println("Da xoa nhan vien");
-        flag = true;
-        break;
+        System.out.println("Đã xóa nhân viên");
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong the tim nhan vien");
-    }
-  }
+    System.out.println("Không tìm thấy nhân viên mã " + maNV);
+}
   public void xoa(String hoTen) {
-    boolean flag = false;
     for(int i=0; i<length; i++) {
-      if(DSNV[i].hoTen.equals(hoTen)) {
+      if(DSNV[i].hoTen.equalsIgnoreCase(hoTen)) {
         for(int j=i; j<length-1; j++) {
           DSNV[j] = DSNV[j+1];
         }
         DSNV = Arrays.copyOf(DSNV, length--);
-        System.out.println("Da xoa nhan vien");
-        flag = true;
-        break;
+        System.out.println("Đã xóa nhân viên");
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong the tim nhan vien");
-    }
+    System.out.println("Không tìm thấy nhân viên " + hoTen);
   }
 
   //sua thong tin nhan vien
   public void sua() {
-    System.out.println("1. Sua theo ma");
-    System.out.println("2. Sua theo ten");
+    System.out.println("1. Sửa theo mã");
+    System.out.println("2. Sửa theo tên");
     Scanner sc = new Scanner(System.in);
     
     int n = sc.nextInt();
     String ten;
     switch (n) {
       case 1:
-        System.out.print("Nhap ma nhan vien muon sua: ");
+        System.out.print("Nhập mã nhân viên muốn sửa: ");
         n = sc.nextInt();
         sua(n);
         break;
       case 2:
-        System.out.print("Nhap ten nhan vien muon sua: ");
+        System.out.print("Nhập tên nhân viên muốn sửa: ");
         ten = sc.nextLine();
         ten = sc.nextLine();
         sua(ten);
@@ -145,9 +136,7 @@ public class DSNhanVien implements iDanhSach{
     }
   }
   public void sua(int maNV) {
-    int i;
-    boolean flag = false;
-    for(i=0; i<length; i++) {
+    for(int i=0; i<length; i++) {
       if(DSNV[i].maNV == maNV) {
         if(DSNV[i] instanceof DauBep)
           quanLySuaDauBep(i);
@@ -155,18 +144,13 @@ public class DSNhanVien implements iDanhSach{
           quanLySuaBoiBan(i);
         else
           quanLySuaThuNgan(i);
-        flag = true;
-        break;
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong the tim nhan vien");
-    }
+    System.out.println("Không tìm thấy nhân viên mã " + maNV);
   }
   public void sua(String hoTen) {
-    int i;
-    boolean flag = false;
-    for(i=0; i<length; i++) {
+    for(int i=0; i<length; i++) {
       if(DSNV[i].hoTen.equals(hoTen)) {
         if(DSNV[i] instanceof DauBep)
           quanLySuaDauBep(i);
@@ -174,30 +158,27 @@ public class DSNhanVien implements iDanhSach{
           quanLySuaBoiBan(i);
         else
           quanLySuaThuNgan(i);
-        flag = true;
-        break;
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong the tim nhan vien");
-    }
+    System.out.println("Không tìm thấy nhân viên " + hoTen);
   }
   private void quanLySuaDauBep(int i) {
     Scanner sc = new Scanner(System.in);
     int n;
     
-    System.out.println("Dau bep: " + DSNV[i].hoTen);
-    System.out.println("1. Sua ma");
-    System.out.println("2. Sua ho ten");
-    System.out.println("3. Sua luong");
-    System.out.println("4. Sua thanh part time");
-    System.out.println("5. Sua thanh full time");
-    System.out.println("6. Sua so ngay lam viec");
-    System.out.println("7. Sua so ngay nghi");
-    System.out.println("8. Them thuong");
-    System.out.println("9. Sua thuong");
-    System.out.println("10. Sua so luong mon da nau");
-    System.out.println("11. Sua tat ca thong tin");
+    System.out.println("Đầu bếp: " + DSNV[i].hoTen);
+    System.out.println("1. Sửa mã");
+    System.out.println("2. Sửa họ tên");
+    System.out.println("3. Sửa lương");
+    System.out.println("4. Sửa thành part time");
+    System.out.println("5. Sửa thành full time");
+    System.out.println("6. Sửa số ngày làm việc");
+    System.out.println("7. Sửa số ngày nghỉ");
+    System.out.println("8. Thêm thưởng");
+    System.out.println("9. Sửa thưởng");
+    System.out.println("10. Sửa số lượng món đã nấu");
+    System.out.println("11. Sửa tất cả thông tin");
     n = sc.nextInt();
     switch (n) {
       case 1:
@@ -244,18 +225,18 @@ public class DSNhanVien implements iDanhSach{
     Scanner sc = new Scanner(System.in);
     int n;
     
-    System.out.println("Boi ban: " + DSNV[i].hoTen);
-    System.out.println("1. Sua ma");
-    System.out.println("2. Sua ho ten");
-    System.out.println("3. Sua luong");
-    System.out.println("4. Sua thanh part time");
-    System.out.println("5. Sua thanh full time");
-    System.out.println("6. Sua so ngay lam viec");
-    System.out.println("7. Sua so ngay nghi");
-    System.out.println("8. Them thuong");
-    System.out.println("9. Sua thuong");
-    System.out.println("10. Sua so luong ban phuc vu");
-    System.out.println("11. Sua tat ca thong tin");
+    System.out.println("Bồi bàn: " + DSNV[i].hoTen);
+    System.out.println("1. Sửa mã");
+    System.out.println("2. Sửa họ tên");
+    System.out.println("3. Sửa lương");
+    System.out.println("4. Sửa thành part time");
+    System.out.println("5. Sửa thành full time");
+    System.out.println("6. Sửa số ngày làm việc");
+    System.out.println("7. Sửa số ngày nghỉ");
+    System.out.println("8. Thêm thưởng");
+    System.out.println("9. Sửa thưởng");
+    System.out.println("10. Sửa số lượng bàn phục vụ");
+    System.out.println("11. Sửa tất cả thông tin");
     n = sc.nextInt();
     switch (n) {
       case 1:
@@ -302,17 +283,17 @@ public class DSNhanVien implements iDanhSach{
     Scanner sc = new Scanner(System.in);
     int n;
     
-    System.out.println("1. Sua ma");
-    System.out.println("2. Sua ho ten");
-    System.out.println("3. Sua luong");
-    System.out.println("4. Sua thanh part time");
-    System.out.println("5. Sua thanh full time");
-    System.out.println("6. Sua so ngay lam viec");
-    System.out.println("7. Sua so ngay nghi");
-    System.out.println("8. Them thuong");
+    System.out.println("1. Sửa mã");
+    System.out.println("2. Sửa họ tên");
+    System.out.println("3. Sửa lương");
+    System.out.println("4. Sửa thành part time");
+    System.out.println("5. Sửa thành full time");
+    System.out.println("6. Sửa số ngày làm việc");
+    System.out.println("7. Sửa số ngày nghỉ");
+    System.out.println("8. Thêm thưởng");
     System.out.println("9. Sua thuong");
-    System.out.println("10. Sua so luong khach");
-    System.out.println("11. Sua tat ca thong tin");
+    System.out.println("10. Sửa số lượng khách");
+    System.out.println("11. Sửa tất cả thông tin");
     n = sc.nextInt();
     switch (n) {
       case 1:
@@ -358,20 +339,20 @@ public class DSNhanVien implements iDanhSach{
 
   //tim kiem nhan vien
   public void timkiem() {
-    System.out.println("1. Tim kiem theo ma");
-    System.out.println("2. Tim kiem theo ten");
+    System.out.println("1. Tim kiem theo mã");
+    System.out.println("2. Tim kiem theo tên");
     Scanner sc = new Scanner(System.in);
     
     int n = sc.nextInt();
     String ten;
     switch (n) {
       case 1:
-        System.out.print("Nhap ma nhan vien muon tim kiem: ");
+        System.out.print("Nhập mã nhân viên muốn tìm kiếm: ");
         n = sc.nextInt();
         timkiem(n);
         break;
       case 2:
-        System.out.print("Nhap ten nhan vien muon tim kiem: ");
+        System.out.print("Nhập tên nhân viên muốn tìm kiếm: ");
         ten = sc.nextLine();
         ten = sc.nextLine();
         timkiem(ten);
@@ -382,38 +363,123 @@ public class DSNhanVien implements iDanhSach{
     }
   }
   public void timkiem(int maNV) {
-    boolean flag = false;
     for(int i=0; i<length; i++) {
       if(DSNV[i].maNV == maNV) {
         DSNV[i].xuat();
-        flag = true;
-        break;
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong the tim nhan vien");
-    }
+    System.out.println("Không tìm thấy nhân viên mã " + maNV);
   }
   public void timkiem(String hoTen) {
-    boolean flag = false;
     for(int i=0; i<length; i++) {
       if(DSNV[i].hoTen.equals(hoTen)) {
         DSNV[i].xuat();
-        flag = true;
-        break;
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong the tim nhan vien");
-    }
+    System.out.println("Không tìm thấy nhân viên " + hoTen);
   }
 
   //in danh sach
   public void xuat() {
     for(int i=0; i<length; i++) {
+      System.out.println("====================");
       DSNV[i].xuat();
     }
   }
+  public void xuatNgan() {
+    for(int i=0; i<length; i++) {
+      System.out.println("====================");
+      System.out.println(DSNV[i].getTen() + "\t" + DSNV[i].getLuong());
+    }
+  }
+
+  public double tinhLuongNhanVien() {
+    double sum = 0;
+    for(int i=0; i<length; i++) {
+      sum += DSNV[i].getTien();
+    }
+    return sum;
+  }
+  public void danhdauNghi(String ten) {
+    for(int i=0; i<length; i++) {
+      if(DSNV[i].getTen().equalsIgnoreCase(ten)) {
+        DSNV[i].addNgayNghi();
+        return;
+      }
+    }
+    System.out.println("Không tìm thấy nhân viên " + ten);
+  }
+
+  public void tangSoMonNau(String ten, Mon mon, KhoNguyenLieu kho, int n) {
+    for(int i=0; i<length; i++) {
+      if(DSNV[i].hoTen.equalsIgnoreCase(ten) && DSNV[i] instanceof DauBep) {
+        if (mon instanceof Nuoc) {
+          ((DauBep)DSNV[i]).nauMon((Nuoc)mon, kho, n);
+        }
+        else {
+          ((DauBep)DSNV[i]).nauMon((DoAn)mon, kho, n);
+        }
+        return;
+      }
+    }
+    System.out.println("Không tìm thấy nhân viên " + ten);
+    Scanner sc = new Scanner(System.in);
+    tangSoMonNau(sc.nextLine(), mon, kho, n);
+  }
+  public ThuNgan tangSoHoaDon(String ten) {
+    for(int i=0; i<length; i++) {
+      if(DSNV[i].hoTen.equalsIgnoreCase(ten) && DSNV[i] instanceof ThuNgan) {
+        ((ThuNgan)DSNV[i]).setHoaDon(((ThuNgan)DSNV[i]).getHoaDon() + 1);
+        return (ThuNgan)DSNV[i];
+      }
+    }
+    System.out.println("Không tìm thấy nhân viên " + ten);
+    Scanner sc = new Scanner(System.in);
+    return tangSoHoaDon(sc.nextLine());
+  }
+  public void tangSoBanPhucVu(String ten) {
+    for(int i=0; i<length; i++) {
+      if(DSNV[i].hoTen.equalsIgnoreCase(ten) && DSNV[i] instanceof BoiBan) {
+        ((BoiBan)DSNV[i]).setSoBanPhucVu(((BoiBan)DSNV[i]).getSoBanPhucVu() + 1);
+        return;
+      }
+    }
+    System.out.println("Không tìm thấy nhân viên " + ten);
+    Scanner sc = new Scanner(System.in);
+    tangSoBanPhucVu(sc.nextLine());
+  }
+
+  public void xemNhanVienNghiHon(int ngay) {
+    for(int i=0; i<length; i++) {
+      if(DSNV[i].getNgayNghi() >= ngay) {
+        System.out.println("====================");
+        System.out.println(DSNV[i].getTen() + "\t" + DSNV[i].getNgayNghi());
+        DSNV[i].addNgayLamViec();
+      }
+    }
+  }
+
+  public void danhDauNghi(String ten) {
+    for(int i=0; i<length; i++) {
+      if(DSNV[i].hoTen.equalsIgnoreCase(ten)) {
+        DSNV[i].addNgayNghi();
+        return;
+      }
+    }
+    System.out.println("Không tìm thấy nhân viên " + ten);
+  }
+  public void danhDauLam(String ten) {
+    for(int i=0; i<length; i++) {
+      if(DSNV[i].hoTen.equalsIgnoreCase(ten)) {
+        DSNV[i].addNgayLamViec();
+        return;
+      }
+    }
+    System.out.println("Không tìm thấy nhân viên " + ten);
+  }
+
 
   //nhap nhan vien thong qua file
   public void addByFile(String filePath) {
@@ -431,21 +497,22 @@ public class DSNhanVien implements iDanhSach{
           DSNV[length] = new ThuNgan();
           ((ThuNgan)DSNV[length]).setHoaDon(Integer.parseInt(arrayLine[1]));
         }
-        else if (arrayLine[0].equalsIgnoreCase("bb")) {
+        else {
           DSNV[length] = new BoiBan();
           ((BoiBan)DSNV[length]).setSoBanPhucVu(Integer.parseInt(arrayLine[1]));
         }
         DSNV[length].setMaNV(Integer.parseInt(arrayLine[2]));
         DSNV[length].setTen(arrayLine[3]);
         DSNV[length].setLuong(Double.parseDouble(arrayLine[4]));
-        if(arrayLine[5].equalsIgnoreCase("ft")) {
+        DSNV[length].setThuong(Double.parseDouble(arrayLine[5]));
+        if(arrayLine[6].equalsIgnoreCase("ft")) {
           DSNV[length].setFulltime();
         }
-        else if(arrayLine[5].equalsIgnoreCase("pt")){
+        else if(arrayLine[6].equalsIgnoreCase("pt")){
           DSNV[length].setParttime();
         }
-        DSNV[length].setNgayLamViec(Integer.parseInt(arrayLine[6]));
-        DSNV[length].setNgayNghi(Integer.parseInt(arrayLine[7]));
+        DSNV[length].setNgayLamViec(Integer.parseInt(arrayLine[7]));
+        DSNV[length].setNgayNghi(Integer.parseInt(arrayLine[8]));
         line = file.readLine();
         length++;
       }
@@ -471,15 +538,15 @@ public class DSNhanVien implements iDanhSach{
       FileWriter file = new FileWriter(filePath);
       for(int i=0; i<length; i++) {
         if(DSNV[i] instanceof DauBep) {
-          file.write("db/"+((DauBep)DSNV[length]).getSoLuongMon()+"/");
+          file.write("db/"+((DauBep)DSNV[i]).getSoLuongMon()+"/");
         }
         if(DSNV[i] instanceof BoiBan) {
-          file.write("bb/"+((BoiBan)DSNV[length]).getSoBanPhucVu()+"/");
+          file.write("bb/"+((BoiBan)DSNV[i]).getSoBanPhucVu()+"/");
         }
         if(DSNV[i] instanceof ThuNgan) {
-          file.write("tt/"+((ThuNgan)DSNV[length]).getHoaDon()+"/");
+          file.write("tn/"+((ThuNgan)DSNV[i]).getHoaDon()+"/");
         }
-        file.write(DSNV[i].getMaNV()+"/"+DSNV[i].getTen()+"/"+DSNV[i].getLuong()+"/"+printFulltime(DSNV[i].getFulltime())+"/"+DSNV[i].getNgayLamViec()+"/"+DSNV[i].getNgayNghi()+"\n");
+        file.write(DSNV[i].getMaNV()+"/"+DSNV[i].getTen()+"/"+DSNV[i].getLuong()+"/"+DSNV[i].getThuong()+"/"+printFulltime(DSNV[i].getFulltime())+"/"+DSNV[i].getNgayLamViec()+"/"+DSNV[i].getNgayNghi()+"\n");
       }
       file.close();
     }

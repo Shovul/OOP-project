@@ -27,12 +27,12 @@ public class ThuNgan extends NhanVien {
   public void nhap() {
     super.nhap();
     Scanner scanner = new Scanner(System.in);
-    System.out.print("Nhap so don da phuc vu: ");
+    System.out.print("Nhập số đơn đã phục vụ: ");
     soHoaDon = scanner.nextInt();
   }
   public void xuat() {
     super.xuat();
-    System.out.println("- So hoa don: " + soHoaDon);
+    System.out.println("- Số hóa đơn: " + soHoaDon);
   }
 
   public void addThuong() {
@@ -41,55 +41,6 @@ public class ThuNgan extends NhanVien {
   public double getTien() {
     return (ngayLamViec - super.checkNgayNghi())*luong + thuong*(soHoaDon/30);
   }
-  
-  // public void capNhatNhanVien() {
-  //   System.out.println("1. Sua ma");
-  //   System.out.println("2. Sua ho ten");
-  //   System.out.println("3. Sua luong");
-  //   System.out.println("4. Sua so ngay lam viec");
-  //   System.out.println("5. Sua so ngay nghi");
-  //   System.out.println("6. Sua tuyen dung (partime/fulltime");
-  //   System.out.println("7. Sua thuong");
-  //   System.out.println("8. Sua so hoa don");
-  //   Scanner scanner = new Scanner(System.in);
-  //   switch (hoTen) {
-  //     case 1:
-  //       System.out.println("Nhap ma");
-  //       maNV = scanner.nextInt();
-  //       break;
-  //     case 2:
-  //       System.out.println("Nhap ho ten");
-  //       maNV = scanner.nextInt();
-  //       break;
-  //     case 3:
-  //       System.out.println("Nhap luong");
-  //       maNV = scanner.nextInt();
-  //       break;
-  //     case 4:
-  //       System.out.println("Nhap so ngay lam viec");
-  //       maNV = scanner.nextInt();
-  //       break;
-  //     case 5:
-  //       System.out.println("Nhap so ngay nghi");
-  //       maNV = scanner.nextInt();
-  //       break;
-  //     case 6:
-  //       System.out.println("Nhap tuyen dung");
-  //       maNV = scanner.nextInt();
-  //       break;
-  //     case 7:
-  //       System.out.println("Nhap thuong");
-  //       maNV = scanner.nextInt();
-  //       break;
-  //     case 8:
-  //       System.out.println("Nhap ma");
-  //       maNV = scanner.nextInt();
-  //       break;
-    
-  //     default:
-  //       break;
-  //   }
-  // }
   
   static public int getSoLuong() {
     return soLuong;

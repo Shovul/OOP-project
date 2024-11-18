@@ -9,10 +9,10 @@ import java.util.Scanner;
 
     public KHACHHANG()
     {
-        TenKH="";
+        TenKH=" ";
         MaKH=0;
         sdtKH=0;
-        emailKH="";
+        emailKH=" ";
     }
     public KHACHHANG(String TenKH, int MaKH , int sdtKH, String emailKH)
     {

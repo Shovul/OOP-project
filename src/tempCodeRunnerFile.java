@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.util.Scanner;
 
  public class KHACHHANG
@@ -82,3 +83,6 @@ import java.util.Scanner;
         System.out.println("email : " + emailKH);
     }
  }
+=======
+hoadonHomNay
+>>>>>>> main

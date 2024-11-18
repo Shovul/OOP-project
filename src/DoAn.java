@@ -25,10 +25,11 @@ public class DoAn extends Mon {
   
   public void setNguyenLieuLam(int i, String ten, int soLuong) {
       nguyenlieuLam[i] =new NguyenLieu();
-      nguyenlieuLam[i].setNguyenLieu(ten);
+      nguyenlieuLam[i].setTen(ten);
       nguyenlieuLam[i].setSoLuong(soLuong);
   }
-  public void setNguyenLieuLam(NguyenLieu[] nguyenlieu) {
+  public void setNguyenLieuLam(int soLuongNguyenLieu, NguyenLieu[] nguyenlieu) {
+    soNguyenLieu = soLuongNguyenLieu;
     nguyenlieuLam = nguyenlieu;
   }
   public void setSoNguyenLieu(int soLuongNguyenLieu) {
@@ -51,7 +52,7 @@ public class DoAn extends Mon {
   public void nhap() {
     super.nhap();
     Scanner scanner = new Scanner(System.in);
-    System.out.print("Nhap so thanh phan cua " + tenThucAn + ": ");
+    System.out.print("Nhập số thành phần của món " + tenThucAn + ": ");
     soNguyenLieu = scanner.nextInt();
     nguyenlieuLam = new NguyenLieu[soNguyenLieu];
     for(int i=0; i<soNguyenLieu; i++) {

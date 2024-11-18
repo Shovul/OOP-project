@@ -6,19 +6,16 @@ public abstract class Mon {
   int maThucAn;
   String tenThucAn;
   double giaThucAn;
-  int soLuong;
   
-  public Mon(int maThucAn, String tenThucAn, double giaThucAn, int soLuong) {
+  public Mon(int maThucAn, String tenThucAn, double giaThucAn) {
     this.giaThucAn = giaThucAn;
     this.tenThucAn = tenThucAn;
     this.maThucAn = maThucAn;
-    this.soLuong = soLuong;
   }
   public Mon() {
     this.giaThucAn = 0;
     this.tenThucAn = "";
     this.maThucAn = 0;
-    this.soLuong = 0;
   }
 
   public void setTenThucAn(String tenThucAn) {
@@ -30,9 +27,6 @@ public abstract class Mon {
   public void setMaThucAn(int maThucAn) {
     this.maThucAn = maThucAn;
   }
-  public void setsoLuong(int soLuong){
-    this.soLuong = soLuong;
-  }
 
   public String getTenThucAn() {
     return tenThucAn;
@@ -43,26 +37,20 @@ public abstract class Mon {
   public int getMaThucAn() {
     return maThucAn;
   }
-  public int getsoLuong(){
-    return soLuong;
-  }
 
   public void nhap() {
     Scanner scanner = new Scanner(System.in);
     
-    System.out.print("Nhap ten mon: ");
+    System.out.print("Nhập tên món: ");
     tenThucAn =  scanner.nextLine();
-    System.out.print("Nhap ma mon: ");
+    System.out.print("Nhập mã món: ");
     maThucAn = scanner.nextInt();
-    System.out.print("Nhap gia mon: ");
+    System.out.print("Nhập giá món: ");
     giaThucAn = scanner.nextDouble();
-    System.out.println("Nhap so luong: ");
-    soLuong = scanner.nextInt();
   }
   public void xuat() {
-    System.out.println("Mon " + tenThucAn + ", ma thuc an: " + maThucAn);
-    System.out.println("- Gia 1 mon: " + giaThucAn);
-    System.out.println("So Luong mon: " + soLuong);
+    System.out.println("Món " + tenThucAn + ", mã thức ăn: " + maThucAn);
+    System.out.println("- Giá 1 món: " + giaThucAn + "vnd");
   }
 
   abstract void dungNguyenLieu(KhoNguyenLieu n);

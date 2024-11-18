@@ -30,7 +30,7 @@ public class KhoNguyenLieu implements iDanhSach{
     length++;
   }
   public void xoa() {
-    System.out.print("Nhap ten nguyen lieu muon xoa: ");
+    System.out.print("Nhập tên nguyên liệu muốn xóa: ");
     Scanner sc = new Scanner(System.in);
     String ten = sc.nextLine();
     for(int i=0; i<length; i++) {
@@ -43,10 +43,10 @@ public class KhoNguyenLieu implements iDanhSach{
     kho = Arrays.copyOf(kho, length--);
   }
   private void quanLySua(int i) {
-    System.out.println("1. Sua ten nguyen lieu");
-    System.out.println("2. Sua so luong nguyen lieu");
-    System.out.println("3. Them so luong nguyen lieu");
-    System.out.println("4. Sua toan bo nguyen lieu");
+    System.out.println("1. Sửa tên nguyên liệu");
+    System.out.println("2. Sửa số lượng nguyen lieu");
+    System.out.println("3. Thêm số lượng nguyen lieu");
+    System.out.println("4. Sửa toàn bộ nguyen lieu");
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();
     switch (n) {
@@ -70,37 +70,33 @@ public class KhoNguyenLieu implements iDanhSach{
     }
   } 
   public void sua() {
-    System.out.print("Nhap ten nguyen lieu muon sua: ");
+    System.out.print("Nhập tên nguyên liệu muốn sửa: ");
     Scanner sc = new Scanner(System.in);
 
-    boolean flag = false;
     String ten = sc.nextLine();
     for(int i=0; i<length; i++) {
       if(kho[i].ten.equals(ten)) {
         quanLySua(i);
-        flag = true;
-        break;
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong tim thay nguyen lieu");
-    } 
+<<<<<<< HEAD
+=======
+    System.out.println("Không tìm thấy nguyên liệu");
+>>>>>>> main
   }
   public void timkiem() {
     Scanner sc = new Scanner(System.in);
-    boolean flag = false;
-    System.out.print("Nhap ten nguyen lieu can tim: ");
+
+    System.out.print("Nhập tên nguyên liệu cần tìm: ");
     String s = sc.nextLine();
     for(int i=0; i<length; i++) {
       if(kho[i].ten.equals(s)) {
         kho[i].xuat();
-        flag = true;
-        break;
+        return;
       }
     }
-    if(!flag) {
-      System.out.println("Khong tin thay nguyen lieu");
-    }
+    System.out.println("Không tìm thấy nguyên liệu");
   }
   public void xuat() {
     for(int i=0; i<length; i++) {
