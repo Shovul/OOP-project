@@ -80,10 +80,7 @@ public class KhoNguyenLieu implements iDanhSach{
         return;
       }
     }
-<<<<<<< HEAD
-=======
     System.out.println("Không tìm thấy nguyên liệu");
->>>>>>> main
   }
   public void timkiem() {
     Scanner sc = new Scanner(System.in);

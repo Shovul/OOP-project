@@ -84,12 +84,24 @@ public class HoaDon {
             System.out.print("Nhập tên món thứ " + (i + 1) + ": ");
             Mon mon = menu.getMon(hd.nextLine());
             if(mon instanceof Nuoc) {
+                if(!kho.coNguyenLieu(((Nuoc)mon).getLoaiNuoc())) {
+                    System.out.println("Hết món");
+                    return;
+                }
                 System.out.print("Nhập size " + mon.tenThucAn + ": ");
                 char size = '@';
                 do {
                     size = hd.next().charAt(0);
                 }while(size != 's' && size != 'm' && size != 'l');
                 ((Nuoc)mon).setSize(size);
+            }
+            else {
+                for(int j=0; j<((DoAn)mon).getSoNguyenLieu(); j++) {
+                    if(!kho.coNguyenLieu(((DoAn)mon).getNguyenLieu()[i])) {
+                        System.out.println("Hết món");
+                        return;
+                    }
+                }
             }
             System.out.println(mon.getTenThucAn() + " " + mon.getGiaThucAn());
             System.out.print("Nhập số lượng: ");

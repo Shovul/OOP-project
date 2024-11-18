@@ -48,7 +48,6 @@ public class DSMon implements iDanhSach {
         break;
 
       default:
-        them();
         break;
     }
   }

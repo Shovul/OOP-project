@@ -1,20 +1,20 @@
-db/5/10001/Tran Thi Thu An/1.0E7/0.0/ft/2/0
-db/8/10002/Nguyen Thi Lan Anh/1.0E7/0.0/pt/1/0
-db/0/10003/Le Thi Bao Trang/1.0E7/0.0/pt/0/0
-db/0/10004/Pham Minh Tu/1.0E7/0.0/ft/0/0
-db/0/10005/Hoang Thi Mai Linh/1.0E7/0.0/ft/0/0
-db/4/10006/Bui Thi Lan/1.0E7/0.0/pt/1/0
-tn/4/20001/Vu Thi Minh Tuan/8000000.0/0.0/ft/1/0
-tn/0/20002/Duong Thi Kim Anh/8000000.0/0.0/ft/1/1
-tn/1/20003/Ngo Thi Thu Hien/8000000.0/0.0/pt/1/0
-tn/1/20004/Lam Thi Thanh Hoa/8000000.0/0.0/pt/0/0
-tn/0/20005/Cao Thi Mai/8000000.0/0.0/pt/0/0
-tn/1/20006/Phan Thi Thu Huong/8000000.0/0.0/ft/0/0
-tn/0/20007/Do Thi Lan Anh/8000000.0/0.0/ft/0/0
-bb/3/30001/Vu Thi Thanh Mai/7500000.0/0.0/ft/2/0
-bb/1/30002/Tran Thi Kim Chi/7500000.0/0.0/pt/1/0
-bb/0/30003/Le Thi Minh Chau/7500000.0/0.0/pt/1/0
-bb/1/30004/Nguyen Thi Bao Lan/7500000.0/0.0/ft/0/0
-bb/2/30005/Hoang Thi Thu Trang/7500000.0/0.0/ft/0/0
-bb/0/30006/Pham Thi Lan Anh/7500000.0/0.0/pt/0/0
-bb/0/30007/Ngo Thi Lan Anh/7500000.0/0.0/ft/0/0
+db/0/10001/Robin/1.0E7/0.0/ft/0/0
+db/0/10002/Sunday/1.0E7/0.0/pt/0/0
+db/0/10003/Dan Heng/1.0E7/0.0/pt/0/0
+db/0/10004/Himeko/1.0E7/0.0/ft/0/0
+db/0/10005/Pom Pom/1.0E7/0.0/ft/0/0
+db/0/10006/Diluc/1.0E7/0.0/pt/0/0
+tn/0/20001/Blade/8000000.0/0.0/ft/0/0
+tn/0/20002/Boothill/8000000.0/0.0/ft/0/0
+tn/0/20003/Rappa/8000000.0/0.0/pt/0/0
+tn/0/20004/March/8000000.0/0.0/pt/0/0
+tn/0/20005/Scaramouche/8000000.0/0.0/pt/0/0
+tn/0/20006/Silver wolf/8000000.0/0.0/ft/0/0
+tn/0/20007/Diona/8000000.0/0.0/ft/0/0
+bb/0/30001/Noelle/7500000.0/0.0/ft/0/0
+bb/0/30002/Kaeya/7500000.0/0.0/pt/0/0
+bb/0/30003/Jing Yuan/7500000.0/0.0/pt/0/0
+bb/0/30004/Kafka/7500000.0/0.0/ft/0/0
+bb/0/30005/Adventurine/7500000.0/0.0/ft/0/0
+bb/0/30006/Hu Tao/7500000.0/0.0/pt/0/0
+bb/0/30007/Furina/7500000.0/0.0/ft/0/0

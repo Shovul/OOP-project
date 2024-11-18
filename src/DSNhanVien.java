@@ -373,7 +373,7 @@ public class DSNhanVien implements iDanhSach{
   }
   public void timkiem(String hoTen) {
     for(int i=0; i<length; i++) {
-      if(DSNV[i].hoTen.equals(hoTen)) {
+      if(DSNV[i].hoTen.equalsIgnoreCase(hoTen)) {
         DSNV[i].xuat();
         return;
       }
