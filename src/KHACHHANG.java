@@ -60,34 +60,25 @@ import java.util.Scanner;
     {
         this.emailKH=emailKH;
     }
-
-    // @Override public String toString()
-    // {
-    //     return "Khách Hàng: \n" +
-    //        "Tên khách hàng:\t" + TenKH + "\n" +
-    //        "Ma khách hàng:\t" + MaKH + "\n" +
-    //        "So đien thoai:\t" + sdtKH + "\n" +
-    //        "Email:\t" + emailKH + "\n";
-    // }
     public void nhap()
     {   
         Scanner sc = new Scanner (System.in);
-        System.out.print("Nhap Ten khach hang: ");
+        System.out.print("Nhập tên khách hàng: ");
         TenKH= sc.nextLine();
-        System.out.print("Nhap Ma khach hang: ");
+        System.out.print("Nhập mã khách hàng: ");
         MaKH= sc.nextInt();
         sc.nextLine(); 
-        System.out.print("Nhap so dien thoai khach hang: ");
+        System.out.print("Nhập số điện thoại của khách hàng: ");
         sdtKH=sc.nextInt();
         sc.nextLine(); // lệnh này loại bỏ ký tự xuống dòng \n
-        System.out.print("Nhap email khach hang: ");
+        System.out.print("Nhập địa chỉ email của khách hàng: ");
         emailKH= sc.nextLine();
     }
     public void xuat()
     {
-        System.out.println("Ten khach hang: " + TenKH);
-        System.out.println("Ma khach hang: " + MaKH);
-        System.out.println("So dien thoai: " + sdtKH);
+        System.out.println("Tên khách hàng: " + TenKH);
+        System.out.println("Mã khách hàng: " + MaKH);
+        System.out.println("Số điện thoại: " + sdtKH);
         System.out.println("email : " + emailKH);
     }
  }

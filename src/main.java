@@ -167,7 +167,10 @@ public class main {
       System.out.println("2. Tìm kiếm khách hàng");
       System.out.println("3. Thêm khách hàng");
       System.out.println("4. Xóa khách hàng");
+<<<<<<< HEAD
+=======
       System.out.println("5. Sửa thông tin khách hàng");
+>>>>>>> main
       System.out.println("6. Nhập danh sách khách hàng từ file");
       System.out.println("7. Xuất danh sách khách hàng ra file");
       System.out.println("8. Cập nhật danh sách khách hàng");
@@ -190,16 +193,24 @@ public class main {
           danhsachKhachHang.sua();
           break;
         case 6: {
+<<<<<<< HEAD
+
+=======
           System.out.println("Nhập tên file chưa thông tin khách hàng ");
           System.out.println("Vi du: dskh.txt ");
+>>>>>>> main
           infile = sc.nextLine();
           infile = sc.nextLine();
           danhsachKhachHang.Readfile(infile);
           break;
         }
         case 7: {
+<<<<<<< HEAD
+
+=======
           System.out.println("Nhập tên file sẽ in các thông tin khách hàng");
           System.out.println("Vi du: danhsachkhachhang.txt ");
+>>>>>>> main
           outfile = sc.nextLine();
           outfile = sc.nextLine();
           danhsachKhachHang.Writefile(outfile);
@@ -297,6 +308,8 @@ public class main {
     String infile = hoadonHomNay;
     String outfile = "";
     do {
+<<<<<<< HEAD
+=======
       System.out.println("-- Quản lý hóa đơn --");
       System.out.println("1. Xuất hóa đơn ra màn hình");
       System.out.println("2. Tìm kiếm hóa đơn");
@@ -307,6 +320,7 @@ public class main {
       System.out.println("7. Xuất danh sách hóa đơn ra file");
       System.out.println("8. Cập nhật danh sách hóa đơn");
       System.out.println("9. Thoát quản lý hóa đơn");
+>>>>>>> main
       n = sc.nextInt();
       switch (n) {
         case 1:
