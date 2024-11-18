@@ -440,13 +440,20 @@ public class main {
 
     ngay += 1;
     hoadonHomNay = "donhang" + Integer.toString(ngay) + ".txt";
+    try {
+      FileWriter file = new FileWriter(hoadonHomNay);
+      file.close();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
 
     do {
-      DSNhanVien danhsachNhanVien = new DSNhanVien();
-      DSMon danhsachMon = new DSMon();
-      KhoNguyenLieu khoNguyenLieu = new KhoNguyenLieu();
-      DSHoaDon danhsachHoaDon = new DSHoaDon();
-      DSKH danhsachKhachHang = new DSKH();
+      danhsachNhanVien = new DSNhanVien();
+      danhsachMon = new DSMon();
+      khoNguyenLieu = new KhoNguyenLieu();
+      danhsachHoaDon = new DSHoaDon();
+      danhsachKhachHang = new DSKH();
       DSBAN danhsachBan = new DSBAN();
       danhsachNhanVien.addByFile("dsnv.txt");
       khoNguyenLieu.addByFile("kho.txt");

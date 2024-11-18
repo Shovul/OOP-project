@@ -41,7 +41,7 @@ public class NguyenLieu {
   }
 
   public void xuat() {
-    System.out.println("Số lượng" + ten + ": " + soLuong);
+    System.out.println("Số lượng " + ten + ": " + soLuong);
   }
   public void nhap() {
     Scanner scanner = new Scanner(System.in);
