@@ -141,16 +141,16 @@ public class main {
     String infile = "";
     String outfile = "";
     do {
-      System.out.println("-- Quan ly Khach hang --");
-      System.out.println("1. Xuat danh sach khach hang ra man hinh");
-      System.out.println("2. Tim kiem khach hang");
-      System.out.println("3. Them khach hang");
-      System.out.println("4. Xoa khach hang");
-      System.out.println("5. Sua thong tin khach hang");
-      System.out.println("6. Nhap danh sach Khach hang tu file");
-      System.out.println("7. Xuat danh sach Khach hang ra file");
-      System.out.println("8. Cap nhat danh sach Khach hang");
-      System.out.println("9. Thoat quan ly khach hang");
+      System.out.println("-- Quản lý khách hàng --");
+      System.out.println("1. Xuất danh sách khách hàng ra màn hình");
+      System.out.println("2. Tìm kiếm khách hàng");
+      System.out.println("3. Thêm khách hàng");
+      System.out.println("4. Xóa khách hàng");
+      System.out.println("5. Sửa thông tin của khách hàng");
+      System.out.println("6. Nhập danh sách khách hàng từ file");
+      System.out.println("7. Xuất danh sách khách hàng ra file");
+      System.out.println("8. Cập nhật danh sách khách hàng");
+      System.out.println("9. Thoát quản lý khách hàng");
       n = sc.nextInt();
       switch (n) {
         case 1:
@@ -169,16 +169,16 @@ public class main {
           danhsachKhachHang.sua();
           break;
         case 6: {
-          System.out.println("Nhap ten file chua thong tin khach hang ");
-          System.out.println("Vi du: dskh.txt ");
+          System.out.println("Nhập tên file chứa thông tin khách hàng ");
+          System.out.println("Ví dụ: dskh.txt ");
           infile = sc.nextLine();
           infile = sc.nextLine();
           danhsachKhachHang.Readfile(infile);
           break;
         }
         case 7: {
-          System.out.println("Nhap ten file se in cac thong tin khach hang");
-          System.out.println("Vi du: danhsachkhachhang.txt ");
+          System.out.println("Nhập tên file sẽ in ra danh sách khách hàng");
+          System.out.println("Ví dụ: danhsachkhachhang.txt ");
           outfile = sc.nextLine();
           outfile = sc.nextLine();
           danhsachKhachHang.Writefile(outfile);
@@ -186,10 +186,10 @@ public class main {
         }
         case 8: {
           if(infile.equals("")) {
-            System.out.println("!Chua nhap file input!");
+            System.out.println("!Chưa nhập file input!");
             break;
           }
-          System.out.println("Da cap nhap file thong tin khach hang");
+          System.out.println("Đã cập nhật file thông tin khách hàng");
           danhsachKhachHang.Writefile(infile);
           break;
         }
@@ -281,8 +281,8 @@ public class main {
       System.out.println("Chon de quan ly");
       System.out.println("1. Danh sach nhan vien");
       System.out.println("2. Danh sach mon an");
-      System.out.println("3. Danh sach khach hang");
-      System.out.println("4. Kho nguyen lieu");
+      System.out.println("3. Danh sach khách hàng");
+      System.out.println("4. Kzho nguyen lieu");
       System.out.println("5. Danh sach don hang");
       System.out.println("6. Thoat chuong trinh");
       n = sc.nextInt();

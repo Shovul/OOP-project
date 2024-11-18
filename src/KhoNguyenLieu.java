@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class KhoNguyenLieu implements iDanhSach{
@@ -84,7 +83,7 @@ public class KhoNguyenLieu implements iDanhSach{
       }
     }
     if(!flag) {
-      System.out.println("Kho tim thay nguyen lieu");
+      System.out.println("Khong tim thay nguyen lieu");
     } 
   }
   public void timkiem() {
